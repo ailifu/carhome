@@ -1,0 +1,41 @@
+/* pages/components/notice/notice.wxss */
+.noticebox {
+  padding:20rpx 20rpx 0;
+  border-bottom: 20rpx solid #f2f2f2;
+}
+
+.noticetab {
+  display: flex;
+  height: 80rpx;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 30rpx;
+  border-bottom: 2rpx solid #dbdbdb;
+}
+
+.noticemenu::before {
+  content: '';
+  width: 8rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  position: absolute;
+  left: 0px;
+  top: 15rpx;
+  background: #f00;
+}
+
+.noticemenu {
+  font-size: 30rpx;
+  position: relative;
+  padding: 15rpx 25rpx;
+  border-bottom: 5rpx solid #fff;
+}
+.active{
+  border-bottom: 5rpx solid #3b79cd; color: #3b79cd;
+}
+.noticebody{ padding:20rpx;} 
+.noticedetail{  font-size:30rpx; line-height: 60rpx; color: #666;}
+.imgbox{ padding: 20rpx 50rpx 50rpx; display: flex;}
+ 

@@ -1,0 +1,84 @@
+/* pages/list/list.wxss */
+page {
+    background-color: #f8f8f8;
+}
+
+.listbox {
+    display: flex;
+    margin-bottom: 20rpx;
+    background-color: #fff;
+    padding: 20rpx;
+
+    .listimage {
+        flex: 2;
+        height: 144rpx;
+
+        image {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .listnote {
+        flex: 5;
+        position: relative;
+
+        view {
+            line-height: 48rpx;
+            overflow: hidden;
+            height: 48rpx;
+            font-size: 28rpx;
+            padding-left: 20rpx;
+
+            navigator {
+                color: var(--basecolor);
+                font-size: 32rpx;
+            }
+        }
+
+        .listbook {
+            text-align: center;
+            align-items: center;
+            border-radius: 10rpx;
+            line-height: 50rpx;
+            position: absolute;
+            right: 10rpx;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 50rpx;
+            width: 100rpx;
+            background-color: var(--basecolor);
+            color: #fff;
+        }
+
+    }
+}
+
+.listtitle {
+    text {
+        float: right;
+        color: #f00;
+        font-size: 24rpx;
+        margin-right: 10rpx;
+    }
+}
+
+
+.steps {
+    display: flex;
+    flex-flow: row warp;
+    padding: 20rpx;
+    background-color: #fff;
+
+    image {
+        width: 100%;
+    }
+
+    /* justify-content:space-around */
+}
+
+.listlocation {
+    padding: 5rpx 10rpx;
+    color: #777;
+}
+.mycar{ margin-bottom: 10rpx;}

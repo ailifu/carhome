@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "taps":"../components/taps/taps",
+    "notice":"../components/notice/notice"
+  }
 }

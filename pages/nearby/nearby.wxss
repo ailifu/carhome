@@ -1,0 +1,7 @@
+/* pages/nearby/nearby.wxss */
+page {
+  height: 100%;
+}
+page map {
+  height: 100%;
+}

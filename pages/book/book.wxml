@@ -1,0 +1,79 @@
+<!-- pages/book/book.wxml -->
+<view>
+    <view class="mycar">
+        <view class="steps">
+            <image src="../../images/booke.png" mode="widthFix" />
+        </view>     
+    </view>
+
+     <view class="carmessage">
+              <view class="cartitle">订单信息</view>
+        <view class="carbox">
+            <view class="drivermessage">
+                <view class="message_label">年检车辆:</view>
+                <view class="weui-cell weui-cell_input">
+                    <input class="weui-input" value="" placeholder="请输入手机号码" />
+                </view>
+            </view>
+            <view class="drivermessage">
+                <view class="message_label">预约日期:</view>
+                <view class="cardate" class="weui-cell ">
+                    <picker mode="date" value="{{book[0].bookdate}}" start="{{book[0].bookdate}}" end="2025-09-01" bindchange="bindDateChange">
+                        <view class="picker">{{book[0].bookdate}}</view>
+                    </picker>
+                </view>
+            </view>
+             <view class="drivermessage">
+                <view class="message_label">预约时段:</view>
+                <view class="cardate" class="weui-cell ">
+                    <picker mode="date" value="{{book[0].bookdate}}" start="{{book[0].bookdate}}" end="2025-09-01" bindchange="bindDateChange">
+                        <view class="picker">{{book[0].bookdate}}[剩余0]</view>
+                    </picker>
+                </view>
+            </view>
+             <view class="drivermessage">
+                <view class="message_label">预约类型:</view>
+                <view class="weui-cell weui-cell_input">
+                    <input class="weui-input" value="" placeholder="请输入验证码" />
+                </view>
+            </view>
+             <view class="drivermessage">
+                <view class="message_label">办理地点:</view>
+                <view class="weui-cell weui-cell_input">
+                    <input class="weui-input" value="" placeholder="请输入验证码" />
+                </view>
+            </view>
+             <view class="drivermessage">
+                <view class="message_label">详细地址:</view>
+                <view class="weui-cell weui-cell_input">
+                    <input class="weui-input" value="" placeholder="请输入验证码" />
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+
+
+     <view class="carmessage">
+          
+        <view class="carbox">
+            <view class="drivermessage">
+                <view class="message_label">预约车型:</view>
+                <view class="weui-cell weui-cell_input">
+                    <input class="weui-input" value="" placeholder="请输入手机号码" />
+                </view>
+            </view>
+            <view class="drivermessage">
+                <view class="message_label">支付类型:</view>
+                <view class="weui-cell weui-cell_input">
+                    <input class="weui-input" value="" placeholder="请输入验证码" />
+                </view>
+            </view>
+               <view class="drivermessage">
+                <view class="message_label">同意支付类型:</view>
+                
+            </view>
+        </view>
+    </view>
+</view>

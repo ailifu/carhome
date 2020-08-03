@@ -1,0 +1,37 @@
+<view class="taps">
+				<block wx:for="{{tabs}}" wx:key="*this" wx:for-item="tabsname" >
+								<view data-tabsid="{{tabsname.id}}"  class="taps-item {{tabsname.active?'active':''}}" bindtap="tabsselect">
+												{{tabsname.name}}
+								</view>
+				</block>
+</view>
+<view class="tabsbody">
+				<view class="databox">
+								<view>
+												<picker mode="date" value="{{dates}}" start="{{dates2}}" end="2025-12-30" bindchange="bindDateChange">
+																<view class="picker">{{dates}}</view>
+																<view class="picker">{{datetips}}</view>
+												</picker>
+								</view>
+								<view>.</view>
+								<view>
+												<picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" range-key="{{'name'}}">
+																<view class="picker">{{objectArray[index].name}}</view>
+																<view class="picker">{{objectArray[index].tips}}</view>
+												</picker>
+												<!-- range='{{objectArray}}' 指定对象数组
+range-key="{{'name'}}" 指定 range-key，即指定使用objectArray中的 name属性来作为选择器中显示的内容，这里需要注意取出的属性外加了‘’号，即‘name’,引号不可少
+value='{{objectArray[rangekey].value}}' ，rangekey是js中定义的对象数组的下标，objectArray[rangekey]取出的是改下标的对象，如 {id: 1,name: '苹果',price: 18.6}，而objectArray[rangekey].value中value值表示的是range-key中指定的属性，这里是name，即苹果。
+最终展示选中的内容{{objectArray[rangekey].price}} 元，仍然是通过数组的下标获取，只是这里取出的是对象，.price取出对象中的价格。 -->
+								</view>
+				</view>
+				<view class="tabtips">
+								<text hidden="{{tabs[0].active?true:false}}">预约车主开自主预约检测时间，避免排队和无法检车</text>
+								<text hidden="{{tabs[1].active?true:false}}">车主根据时间，地点预约代办员上门代办检车</text>
+				</view>
+</view>
+<view class="butsubmit">
+				<button style="width:560rpx;height:90rpx; font-size:38rpx" class="buticon" form-type="submit" url="../list/list?date={{dates}}&time={{index}}" bindtap="appointmentfunc">
+								马上预约
+				</button>
+</view>

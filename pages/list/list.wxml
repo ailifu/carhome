@@ -1,0 +1,26 @@
+<!-- pages/list/list.wxml -->
+<view>
+  <view class="listbody">
+    <view class="steps">
+      <image src="../../images/listtips.png" mode="widthFix" />
+    </view>
+    <view class="listlocation">
+      <text>您的位置：</text>
+      <text class='m-bbt'>{{province}} {{city}}{{district}}</text>
+    </view>
+    <view class="listbox" wx:for="{{data}}" wx:key="index">
+      <view class="listimage">
+        <image src="{{item.logo}} " mode="scaleToFill"></image>
+      </view>
+      <view class="listnote" >
+        <view class="listtitle">
+          <text>{{item.range}}公里</text>
+          <navigator>{{item.site_name}}</navigator>
+        </view>
+        <view>{{item.site_kefu}}</view>
+        <view>{{item.address}}</view>
+        <navigator class="listbook" url="../mycar/mycar" open-type="navigate">预约</navigator>
+      </view>
+    </view>
+  </view>
+</view>

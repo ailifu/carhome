@@ -1,10 +1,28 @@
 /**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
+page,
+view,
+text,
+navigator,
+swiper {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+page {
+    --tabcolor: #f60;
+    font-size: 28rpx;
+    --basecolor: #417ABC
+}
+
+.steps {
+    display: flex;
+    flex-flow: row warp;
+    padding: 20rpx;
+    background-color: #fff;
+    /* justify-content:space-around */
+}
+
+.steps image {
+    width: 100%;
+}

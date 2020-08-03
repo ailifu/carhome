@@ -1,13 +1,56 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/mycar/mycar",
+    "pages/book/book",
+    "pages/addcar/addcar",
+    "pages/list/list",
+    "pages/process/process",
+    "pages/nearby/nearby",
+    "pages/myuser/myuser",
     "pages/logs/logs"
-  ],
+  ],"plugins": {
+    "ocr-plugin": {
+      "version": "3.0.3",
+      "provider": "wx4418e3e031e551be"
+    }
+  },"permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+  },
+  
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle":"dark", 
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "检车HOME",
+    "navigationBarTextStyle":"black" ,
+    "enablePullDownRefresh":false ,
+    "backgroundColor": "#fff"  
+  },"tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "预约",
+      "iconPath": "icon/index.png",
+      "selectedIconPath": "icon/indexcur.png"
+    },
+    {
+      "pagePath": "pages/nearby/nearby",
+      "text": "附近",
+      "iconPath": "icon/map.png",
+      "selectedIconPath": "icon/mapcur.png"
+    },{
+      "pagePath": "pages/process/process",
+      "text": "流程",
+      "iconPath": "icon/press.png",
+      "selectedIconPath": "icon/presscur.png"
+    },{
+      "pagePath": "pages/myuser/myuser",
+      "text": "我的",
+      "iconPath": "icon/my.png",
+      "selectedIconPath": "icon/mycur.png"
+    }],"color": "#000000",
+    "selectedColor": "#f00"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

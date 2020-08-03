@@ -1,0 +1,4 @@
+<!--pages/process/process.wxml-->
+ <view class="processimg">
+  <image class="processimg" src="/images/IMG_0636.png"  mode="widthFix"></image>
+ </view>

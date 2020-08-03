@@ -1,13 +1,23 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<!-- index.wxml -->
+<view>
+  <view class='swiper'>
+    <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" duration="{{duration}}" interval='{{interval}}' indicator-active-color="#007aff" bindchange="bindchange" circular="{{circular}}" style="height:{{imgheights[current]}}rpx;">
+      <block wx:for='{{imgUrls}}' wx:key="index">
+        <swiper-item>
+          <image src="{{item}}" data-id='{{index}}' class="slide-image" mode="widthFix" bindload="imageLoad" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="datebox">
+      <taps tabs="{{tabs}}" bindtabsselect="newselecttabs"></taps>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <!-- 图片介绍 -->
+  <view class="imagebox">
+    <image class="imagedetail" src="/images/tips1.png" mode="widthFix"></image>
+    <image class="imagedetail" src="/images/tips2.png" mode="widthFix"></image>
+    <image class="imagedetail" src="/images/tips3.png" mode="widthFix"></image>
   </view>
+  <!-- 图片介绍 -->
+  <notice></notice>
 </view>

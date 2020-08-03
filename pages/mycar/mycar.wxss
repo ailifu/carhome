@@ -1,0 +1,66 @@
+/* pages/mycar/mycar.wxss */
+page {
+  background-color: #f8f8f8;
+}
+page .mycar .addcar {
+  background-color: #2559A0;
+  height: 80rpx;
+  width: 690rpx;
+  position: absolute;
+  bottom: 50rpx;
+  left: 30rpx;
+  border-radius: 15rpx;
+  font-size: 36rpx;
+  color: #Fff;
+  text-align: center;
+  line-height: 80rpx;
+}
+page .listbox {
+  display: flex;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  padding: 20rpx;
+}
+page .listbox .listimage {
+  flex: 2;
+  height: 170rpx;
+}
+page .listbox .listimage image {
+  width: 100%;
+  height: 100%;
+}
+page .listbox .listnote {
+  flex: 6;
+  position: relative;
+}
+page .listbox .listnote view {
+  line-height: 60rpx;
+  overflow: hidden;
+  height: 60rpx;
+  font-size: 30rpx;
+  padding-left: 20rpx;
+  color: #474747;
+}
+page .listbox .listnote view navigator {
+  color: #474747;
+  font-size: 32rpx;
+}
+page .listbox .listnote .listbook {
+  text-align: center;
+  align-items: center;
+  border-radius: 10rpx;
+  line-height: 50rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 44rpx;
+  padding: 0;
+  height: 40rpx;
+  width: 40rpx;
+}
+page .listbox .listnote .listbook image {
+  width: 100%;
+  height: 100%;
+}
+.mycar {
+  margin-bottom: 10rpx;
+}

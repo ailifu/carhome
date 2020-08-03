@@ -1,0 +1,112 @@
+/* pages/addcar/addcar.wxss */
+page {
+  background-color: #f8f8f8;
+}
+page ocr-navigator {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+page .cartips {
+  background-color: #E9D4D5;
+  color: #E93D30;
+  height: 70rpx;
+  width: 750rpx;
+  line-height: 70rpx;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+page .carmessage {
+  width: 690rpx;
+  margin: 0 auto 30rpx;
+  background-color: #f8f8f8;
+  box-shadow: 0 0 20rpx #bbb;
+  border-radius: 15rpx;
+}
+page .carmessage .carcam {
+  text-align: center;
+  height: 362rpx;
+  width: 560rpx;
+  margin: 0 auto  40rpx;
+  overflow: hidden;
+  padding: 30rpx 0 0;
+}
+page .carmessage .carcam .driver {
+  height: 362rpx;
+  width: 560rpx;
+}
+page .carmessage .carcam .carimage {
+  height: 362rpx;
+  position: relative;
+  width: 560rpx;
+}
+page .carmessage .carcam .carimage image {
+  width: 100%;
+}
+page .carmessage .carcam .carimage .img_example {
+  width: 320rpx;
+  height: 170rpx;
+  position: absolute;
+  top: 38rpx;
+  left: 118rpx;
+}
+page .carmessage .cartitle {
+  font-weight: bold;
+  color: #565656;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  margin: 0 40rpx;
+}
+page .carmessage .cartitle::before {
+  background-color: #F00;
+  width: 5rpx;
+  height: 30rpx;
+  content: '';
+  display: block;
+  float: left;
+  margin-right: 30rpx;
+}
+page .carmessage .drivermessage {
+  display: flex;
+  margin: 0 40rpx;
+  border-bottom: 1px solid #dbdbdb;
+}
+page .carmessage .drivermessage .message_label {
+  flex: 2;
+  color: #A7A7A7;
+  height: 80rpx ;
+  line-height: 80rpx;
+  text-indent: 20rpx;
+}
+page .carmessage .drivermessage .weui-cell {
+  flex: 5;
+  line-height: 80rpx;
+}
+page .carmessage .drivermessage .weui-cell input {
+  color: #696969;
+  line-height: 80rpx;
+  height: 80rpx ;
+}
+page .carmessage .drivermessage .weui-cell picker {
+  color: #525252;
+  line-height: 80rpx;
+  height: 80rpx ;
+}
+page .carmessage .drivermessage:last-child {
+  border: none;
+}
+.addcar {
+  background-color: #2559A0;
+  height: 80rpx;
+  width: 690rpx;
+  border-radius: 15rpx;
+  font-size: 36rpx;
+  color: #Fff;
+  text-align: center;
+  line-height: 80rpx;
+  margin: 0 auto;
+}
+.addcarbox {
+  height: 100%;
+  margin-bottom: 50rpx;
+}

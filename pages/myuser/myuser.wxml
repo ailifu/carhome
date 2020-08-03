@@ -1,0 +1,83 @@
+<!--pages/myuser/myuser.wxml-->
+<view wx:if="{{isHide}}">
+  <view wx:if="{{canIUse}}">
+    <view class='header'>
+      <image src='../../images/caricon.png'></image>
+    </view>
+
+    <view class='content'>
+      <view>申请获取以下权限</view>
+      <text>获得你的公开信息(昵称，头像等)</text>
+    </view>
+
+    <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+      授权登录
+    </button>
+  </view>
+  <view wx:else>请升级微信版本</view>
+</view>
+
+<view wx:else>
+  <view class="userinfo">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="userinfo-main" >
+ <view  class="userinfo-tips">
+   <view class="allorder">
+    <view ><image src="../../images/all.png" mode="widthFix" /></view>
+   全部订单</view> <view class="allbook"><view ><image src="../../images/book.png" mode="widthFix" /></view>预约码</view>
+ </view>
+  </view>
+   <view class="userinfo-body" >
+    <view class="userinfo-gift" >
+      <image src="/images/gift.png" mode="widthFix"></image>
+    </view>
+  <view class='item'>
+   
+    <view class="title title-gift">优惠券</view>
+    <view class="detail2">
+      <text>></text>
+    </view>
+  </view>
+  
+
+  
+  <view class="hr"></view>
+  <view class='item'>
+    <view class="title">我的汽车</view>
+    <view class="detail2">
+      <text> ></text>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="item">
+    <view class="title">地址簿</view>
+    <view class="detail2">
+      <text> ></text>
+    </view>
+  </view>
+  
+   
+ 
+  
+  <view class="hr"></view>
+  <view class='item'>
+    <view class="title">关于牛审</view>
+    <view class="detail2">
+      <text> ></text>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="item">
+    <view class="title">我要申诉</view>
+    <view class="detail2">
+      <text> ></text>
+    </view>
+  </view>
+  
+   
+  <view class="hr"></view>  </view>
+</view>
+
+

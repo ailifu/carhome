@@ -1,0 +1,21 @@
+<view>
+    <view class="mycar">
+        <view class="steps">
+            <image src="../../images/listtips2.png" mode="widthFix" />
+        </view>
+         <navigator class="addcar" url="../addcar/addcar">添加车辆</navigator>
+    </view>
+    <view class="listbox" >
+      <view class="listimage">
+        <image src="../../images/cardemo.png " mode="scaleToFill"></image>
+      </view>
+      <view class="listnote" catchtap="clickone">
+        <view class="listtitle">        
+        {{plate_num}} 
+        </view>
+        <view>车主姓名：{{owner}}</view>
+        <view>车辆类型：{{vehicle_type}}</view>
+        <view class="listbook"  catchtap="clicktwo"><image src="../../images/caredit.png" mode="widthFix"/></view>
+      </view>
+    </view>
+</view>

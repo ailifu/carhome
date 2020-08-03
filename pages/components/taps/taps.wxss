@@ -1,0 +1,80 @@
+/* pages/components/taps.wxss */
+.taps {
+  display: flex;
+  height: 80rpx;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10rpx 10rpx 0 0;
+
+}
+
+.taps-item {
+  width: 50%;
+  text-align: center;
+  align-items: center;
+  background: #eeeef3;
+  border-radius: 0 0 20rpx 0;
+  position: relative;
+  color: #888;
+}
+
+.active {
+  background: #fff;
+  font-weight: bold;
+  color: #444;
+}
+
+.active::after {
+  content: '';
+  display: block;
+  width: 100rpx;
+  height: 8rpx;
+  background: #2559a0;
+  position: absolute;
+  left: 50%;
+  margin-top: -4rpx;
+  transform: translateX(-50%);
+  border-radius: 20rpx;
+}
+
+.taps-item:last-child {
+  border-radius: 0 0 0 20rpx;
+}
+
+.buticon {
+  background: #65bbf9;
+  color: #fff;
+  border: 0;
+  border-radius: 100rpx;
+  width: 560rpx;
+  box-shadow: 0 0 10px #9fd2f4;
+  align-items: center;
+  justify-content: center;
+}
+
+.databox {
+  display: flex;
+
+  box-sizing: border-box;
+  align-items: center;
+  text-align: center;
+  padding: 40rpx 0;
+  color: #6c6c6c;
+  justify-content: space-around;
+}
+
+.tabtips {
+  text-align: center;
+  font-size: 26rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #cfcfcf;
+}
+
+.butsubmit {
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  color: #fff;
+}
