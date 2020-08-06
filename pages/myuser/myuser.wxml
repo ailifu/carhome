@@ -35,7 +35,7 @@
     </view>
   <view class='item'>
    
-    <view class="title title-gift">优惠券</view>
+    <view class="title title-gift" bindtap='handlegift'>优惠券</view>
     <view class="detail2">
       <text>></text>
     </view>
@@ -44,8 +44,8 @@
 
   
   <view class="hr"></view>
-  <view class='item'>
-    <view class="title">我的汽车</view>
+  <view class='item' bindtap='handlemycar'>
+    <view class="title" >我的汽车</view>
     <view class="detail2">
       <text> ></text>
     </view>
@@ -69,7 +69,7 @@
     </view>
   </view>
   <view class="line"></view>
-  <view class="item">
+  <view class="item" bindtap='handlefeedback'>
     <view class="title">我要申诉</view>
     <view class="detail2">
       <text> ></text>

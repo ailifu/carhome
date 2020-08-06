@@ -1,0 +1,82 @@
+<view class="page">
+    <view class="container">
+
+        <view class="c_title">*请描述你遇到的问题</view>
+        <view class="problem">
+            <view class="comment-btn">
+                <button v-for="(item, index) in problemList" :key="index" bindtap="checkboxChange" :data-value="item.id" :data-index="index" :checked="item.selected" :class="'btn ' + (item.selected ? 'btn-selected' : '')">
+                    {{item.name}}
+                </button>
+            </view>
+        </view>
+
+        <form bindsubmit="formSubmit">
+
+            <view class="weui-cells__title">请描述你的问题</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <textarea class="weui-textarea" placeholder="请输入问题描述" style="height: 5.3em" name="post_content" ></textarea>
+                    </view>
+                </view>
+            </view>
+
+            <!-- <view class='dividingLine'></view> -->
+
+            <view class="page__bd" style="padding-bottom:0;">
+                <view class="weui-cells" style="margin-top:0">
+                    <view class="weui-cell">
+                        <view class="weui-cell__bd">
+                            <view class="weui-uploader">
+                                <view class="weui-uploader__hd">
+                                    <view class="weui-uploader__title">上传凭证</view>
+                                    <view class="weui-uploader__info">{{files.length}}/3</view>
+                                </view>
+                                <view class="weui-uploader__bd">
+									<view class="weui-uploader__files" id="uploaderFiles">
+									<block v-for="(item, index) in files" :key="index">
+										<view class="weui-uploader__file" bindtap="previewImage" :id="item">
+											<image class="weui-uploader__img" :src="item" mode="aspectFill"></image>
+											<view class="delete-btn" :data-index="index" catchtap="deleteImage">删除</view>
+										</view>
+									</block>	
+								</view>
+                                    <view class="weui-uploader__input-box">
+                                        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+            <!-- <view class='dividingLine'></view> -->
+
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">联系人：</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="contact_man" placeholder="请输入您的姓名"bindinput="manInput"></input>
+                </view>
+            </view>
+
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">联系电话：</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="contact_phone" placeholder="请输入您的电话"></input>
+                </view>
+            </view>
+
+            <view class="dividingLine"></view>
+
+            <button form-type="submit" type="primary">提交</button>
+
+        </form>
+
+    </view>
+
+</view>

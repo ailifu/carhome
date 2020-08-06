@@ -12,41 +12,42 @@
             <view class="drivermessage">
                 <view class="message_label">年检车辆:</view>
                 <view class="weui-cell weui-cell_input">
-                    <input class="weui-input" value="" placeholder="请输入手机号码" />
+                    {{bookcarno}}
                 </view>
             </view>
             <view class="drivermessage">
                 <view class="message_label">预约日期:</view>
                 <view class="cardate" class="weui-cell ">
-                    <picker mode="date" value="{{book[0].bookdate}}" start="{{book[0].bookdate}}" end="2025-09-01" bindchange="bindDateChange">
-                        <view class="picker">{{book[0].bookdate}}</view>
+                    <picker mode="date" value="{{bookdate}}" start="2000-09-01" end="{{bookdate}}" bindchange="bindDateChange">
+                        <view class="picker">{{bookdate}}</view>
                     </picker>
                 </view>
             </view>
              <view class="drivermessage">
                 <view class="message_label">预约时段:</view>
                 <view class="cardate" class="weui-cell ">
-                    <picker mode="date" value="{{book[0].bookdate}}" start="{{book[0].bookdate}}" end="2025-09-01" bindchange="bindDateChange">
-                        <view class="picker">{{book[0].bookdate}}[剩余0]</view>
+                    <picker mode="date" value="{{}}">
+                        <view class="picker">{{}}剩余0</view>
                     </picker>
                 </view>
             </view>
              <view class="drivermessage">
                 <view class="message_label">预约类型:</view>
                 <view class="weui-cell weui-cell_input">
-                    <input class="weui-input" value="" placeholder="请输入验证码" />
+                 <block wx:if="{{bookcartype==='0'}}">自主预约</block>
+                 <block wx:else>上门代办 </block>
                 </view>
             </view>
              <view class="drivermessage">
                 <view class="message_label">办理地点:</view>
                 <view class="weui-cell weui-cell_input">
-                    <input class="weui-input" value="" placeholder="请输入验证码" />
+                    {{bookcarname}}
                 </view>
             </view>
              <view class="drivermessage">
                 <view class="message_label">详细地址:</view>
                 <view class="weui-cell weui-cell_input">
-                    <input class="weui-input" value="" placeholder="请输入验证码" />
+                  {{bookcaraddress}}
                 </view>
             </view>
         </view>

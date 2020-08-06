@@ -101,7 +101,7 @@ page .carmessage .drivermessage:last-child {
   width: 690rpx;
   border-radius: 15rpx;
   font-size: 36rpx;
-  color: #Fff;
+  color: #fff;
   text-align: center;
   line-height: 80rpx;
   margin: 0 auto;
@@ -109,4 +109,24 @@ page .carmessage .drivermessage:last-child {
 .addcarbox {
   height: 100%;
   margin-bottom: 50rpx;
+}
+.weuiyzm {
+  display: flex;
+  position: relative;
+}
+.weuiyzm .weui-input {
+  flex: 0 0 160rpx;
+}
+.weuiyzm .codeBtn {
+  position: absolute;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  top: 15rpx;
+  color: #fff;
+  width: 220rpx;
+  font-size: 26rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #2559A0;
 }

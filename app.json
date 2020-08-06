@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/feedback/feedback",
     "pages/mycar/mycar",
     "pages/book/book",
     "pages/addcar/addcar",

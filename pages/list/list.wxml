@@ -19,7 +19,7 @@
         </view>
         <view>{{item.site_kefu}}</view>
         <view>{{item.address}}</view>
-        <navigator class="listbook" url="../mycar/mycar" open-type="navigate">预约</navigator>
+        <navigator class="listbook" url="../mycar/mycar?storeid={{item.storeid}}&address={{item.address}}&name={{item.site_name}}" open-type="navigate">预约</navigator>
       </view>
     </view>
   </view>

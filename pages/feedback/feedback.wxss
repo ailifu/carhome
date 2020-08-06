@@ -1,0 +1,91 @@
+/* pages/feedback/feedback.wxss */
+.page {
+    box-sizing: border-box;
+}
+
+.dividingLine {
+    width: 100%;
+    height: 20rpx;
+    background: gainsboro;
+}
+
+.c_title {
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    background: gainsboro;
+    padding-left: 10rpx;
+}
+
+.problem {
+    width: 100%;
+    /* height: 5em; */
+    height: 3em;
+}
+
+.problem .w1 {
+    width: 100%;
+    height: auto;
+}
+
+.problem .w1__item1 {
+    width: 22%;
+    height: 2.3em;
+    line-height: 2.3em;
+    float: left;
+    margin: 0 1%;
+    margin-top: 0.2em;
+    text-align: center;
+    border: 1px solid gainsboro;
+    border-radius: 1.25em;
+    font-size: 28rpx;
+}
+
+.problem .active {
+    background: green;
+    color: white;
+}
+
+.delete-btn {
+    width: 100%;
+    height: 60rpx;
+    margin-top: 15rpx;
+    line-height: 60rpx;
+    text-align: center;
+    font-size: 26rpx;
+    color: black;
+    background: gainsboro;
+}
+
+
+form {
+    margin-top: 10rpx;
+    width: 100%;
+    height: auto;
+}
+
+form input {
+    height: 50rpx;
+}
+
+.comment-btn {
+    float: left;
+}
+
+/*多选样式*/
+.btn {
+    width: 150rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 24rpx;
+    padding: 0;
+    background: #fff;
+    border-radius: 4px;
+    margin: 15rpx 10rpx;
+    text-align: center;
+    float: left;
+}
+
+.btn-selected {
+    border: 1px solid #06a380;
+}

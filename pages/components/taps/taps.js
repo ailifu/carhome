@@ -36,7 +36,7 @@ if(currentTimes>=7 && currentTimes<8){
    newindex=10
 }else if(currentTimes>=18 && currentTimes<24){
    newindex=0
-  const year1 = date.getFullYear()
+const year1 = date.getFullYear()
 const month1 = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
 const day1 = date.getDate()+1
 var newdate=year1+'-'+month1+'-'+day1
@@ -142,8 +142,9 @@ Component({
     }, appointmentfunc() {
     //  console.log(newdate,'---------------',this.data.dates);
       if(newdate===this.data.dates){
-        
-      let info = encodeURIComponent(this.data.dates);
+        /**转码 */
+        // let info = encodeURIComponent(this.data.dates);
+        let info = this.data.dates;
            wx.navigateTo({
         url: '../list/list'+'?date='+info+'&time='+this.data.index+'&cartype='+this.data.cartype,
       })

@@ -17,36 +17,32 @@ Page({
     province: province,
     city: city,
     district: district,
-    book: [{
-      bookdate: '',
-      booktime: ''
-    }
-    ]
+
 
   }, datalist: [],
   onLoad: function (options) {
+    console.log(options);
+    wx.setStorageSync('bookdate', options.date);
+    wx.setStorageSync('bookcartype', options.cartype);
+    wx.setStorageSync('booktime', options.time);
+
     // wx.showToast({
     //   title: '数据加载中',
     //   icon: 'loading',
     // });
     //这里是将预定信息存储到数组对象中
-    var newbook = "book[0].bookdate";
-    var newbook1 = "book[0].booktime";
-    this.setData({
-      [newbook]: options.date,
-      [newbook1]: options.time,
-    })
+  
     qqmapsdk = new QQMapWX({
       key: 'YYSBZ-HEZR6-WA5S2-E7YF4-N6HKV-VQFTG' //自己的key秘钥 http://lbs.qq.com/console/mykey.html 在这个网址申请
     })
 
     this.getcatitems();
-    
+
   }, getcatitems() {
     request({
-      url: "https://carinspect.xgyvip.cn/api/home/store/lists?page=" + this.data.page + "&pagesize=10"+ "&lat="+ this.data.selflatitude+ "&lng="+ this.data.selflongitude
+      url: "https://carinspect.xgyvip.cn/api/home/store/lists?page=" + this.data.page + "&pagesize=10" + "&lat=" + this.data.selflatitude + "&lng=" + this.data.selflongitude
     }).then((result) => {
-       //console.log(result.data);
+      //console.log(result.data);
       this.datalist = result.data
       let newadata = this.datalist.data.map((v, index) => {
         let range = this.calculateDistance(this.data.selflatitude, this.data.selflongitude, v.lat, v.lng)
@@ -109,5 +105,5 @@ Page({
     return num.toFixed(0);//返回单位:米
 
 
-  } 
+  }
 })
