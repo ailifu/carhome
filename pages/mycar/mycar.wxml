@@ -14,7 +14,7 @@
         <view class="listtitle">{{item.car_no}}</view>
         <view>车主姓名：{{item.car_linkname}}</view>
         <view>车辆类型：{{item.car_cate}}</view>
-        <view class="listbook" catchtap="clicktwo">
+        <view class="listbook" catchtap="clickedit">
           <image src="../../images/caredit.png" mode="widthFix" />
         </view>
       </view>

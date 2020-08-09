@@ -1,25 +1,27 @@
 <view class="noticebox">
   <view class="noticemenu">年检须知</view>
-<view class="noticetab">
-  <view  data-tabsid="0" class="{{active==0?'active':''}}" bindtap="tabsselect">年检需要哪些材料</view> 
-  <view data-tabsid="1" bindtap="tabsselect"  class="{{active==1?'active':''}}">哪些车需要上线年检？</view>
-</view>
-<view class="noticebody">
-  <view class="noticedetail" hidden="{{active==0?false:true}}">
-    <view class="noticedetail">1.机动车行驶证原件(正、 副本)</view>
-      <view class="noticedetail">2.有效期内的交强险副本原件(含车船税、挂车提供车船税完税证明原件)</view>
-         <view class="noticedetail">3.单位车辆提供单位出具的委托书(盖公章)</view>
+  <view class="noticetab">
+    <view data-tabsid="0" class="{{active==0?'active':''}}" bindtap="tabsselect">年检需要哪些材料</view>
+    <view data-tabsid="1" bindtap="tabsselect" class="{{active==1?'active':''}}">哪些车需要上线年检？</view>
   </view>
-  <view  hidden="{{active==1?false:true}}"> <view class="noticedetail" >1.注册登记日期超过6年的私家车（6年后每年一检）</view>
-      <view class="noticedetail" >2.注册登记日期6年内，但有伤亡事故的私家车</view>
-        <view class="noticedetail" >3.面包车、≥7座车辆（前6年每2年一检测，6年后每年一检）</view>
-          <view class="noticedetail" >4.营运车辆(前5年每年- -检，第6年每半年一检)</view>
-            <view class="noticedetail">5.出厂日期2年以上未办理注册登记的私家车</view></view>
-</view>
+  <view class="noticebody">
+    <view class="noticedetail" hidden="{{active==0?false:true}}">
+      <view class="noticedetail">1.机动车行驶证原件(正、 副本)</view>
+      <view class="noticedetail">2.有效期内的交强险副本原件(含车船税、挂车提供车船税完税证明原件)</view>
+      <view class="noticedetail">3.单位车辆提供单位出具的委托书(盖公章)</view>
+    </view>
+    <view hidden="{{active==1?false:true}}">
+      <view class="noticedetail">1.注册登记日期超过6年的私家车（6年后每年一检）</view>
+      <view class="noticedetail">2.注册登记日期6年内，但有伤亡事故的私家车</view>
+      <view class="noticedetail">3.面包车、≥7座车辆（前6年每2年一检测，6年后每年一检）</view>
+      <view class="noticedetail">4.营运车辆(前5年每年- -检，第6年每半年一检)</view>
+      <view class="noticedetail">5.出厂日期2年以上未办理注册登记的私家车</view>
+    </view>
+  </view>
 </view>
 <view class="noticebox">
- <view class="noticemenu">年检流程</view>
+  <view class="noticemenu">年检流程</view>
   <view class="imgbox">
- <image src="/images/img.png"  mode="widthFix"></image>
- </view>
+    <image src="/images/img.png" mode="widthFix"></image>
   </view>
+</view>

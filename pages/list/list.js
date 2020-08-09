@@ -21,17 +21,11 @@ Page({
 
   }, datalist: [],
   onLoad: function (options) {
-    console.log(options);
+   
     wx.setStorageSync('bookdate', options.date);
     wx.setStorageSync('bookcartype', options.cartype);
     wx.setStorageSync('booktime', options.time);
 
-    // wx.showToast({
-    //   title: '数据加载中',
-    //   icon: 'loading',
-    // });
-    //这里是将预定信息存储到数组对象中
-  
     qqmapsdk = new QQMapWX({
       key: 'YYSBZ-HEZR6-WA5S2-E7YF4-N6HKV-VQFTG' //自己的key秘钥 http://lbs.qq.com/console/mykey.html 在这个网址申请
     })
@@ -56,54 +50,32 @@ Page({
       // console.log(this.data.data, '-----------');
     })
   }, calculateDistance(lat1, lng1, lat2, lng2) {
-
     lat1 = lat1 * 1;
     lng1 = lng1 * 1;
     lat2 = lat2 * 1;
     lng2 = lng2 * 1;
     lat1, lng1, lat2, lng2
     var f = ((lat1 + lat2) / 2) * Math.PI / 180.0;
-
     var g = ((lat1 - lat2) / 2) * Math.PI / 180.0;
-
     var l = ((lng1 - lng2) / 2) * Math.PI / 180.0;
-
     var sg = Math.sin(g);
-
     var sl = Math.sin(l);
-
     var sf = Math.sin(f);
-
     var s, c, w, r, d, h1, h2;
-
-    var a = 6378137.0;//地球的直径
-
+    var a = 6378137.0;//地球的直
     var fl = 1 / 298.257;
-
     sg = sg * sg;
-
     sl = sl * sl;
-
     sf = sf * sf;
-
     s = sg * (1 - sl) + (1 - sf) * sl;
-
     c = (1 - sg) * (1 - sl) + sf * sl;
-
     w = Math.atan(Math.sqrt(s / c));
-
     r = Math.sqrt(s * c) / w;
-
     d = 2 * w * a;
-
     h1 = (3 * r - 1) / 2 / c;
-
     h2 = (3 * r + 1) / 2 / s;
-
     var num = d * (1 + fl * (h1 * sf * (1 - sg) - h2 * (1 - sf) * sg)) / 1000
-
     return num.toFixed(0);//返回单位:米
-
 
   }
 })

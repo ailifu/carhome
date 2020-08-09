@@ -1,0 +1,36 @@
+<!-- pages/components/booktips.wxml -->
+<view class="booktips">
+    <view class="noticebox">
+        <view class="noticetab">
+            <view data-tabsid="0" class="{{active==0?'active':''}}" bindtap="tabsselect">专属特权</view>
+            <view data-tabsid="1" bindtap="tabsselect" class="{{active==1?'active':''}}">服务流程</view>
+            <view data-tabsid="2" bindtap="tabsselect" class="{{active==2?'active':''}}">携带证件</view>
+            <view data-tabsid="3" bindtap="tabsselect" class="{{active==3?'active':''}}">自查事项</view>
+        </view>
+        <view class="noticebody">
+            <view class="noticedetail" hidden="{{active==0?false:true}}">
+                <view class="noticedetail">特权1.十年检车品牌加持，车检服务更快捷</view>
+                <view class="noticedetail">特权2. LBS智能判断周边检测站，距离优先，想去哪就去哪</view>
+                <view class="noticedetail">特权3.扫一扫行驶证智能判断检车类型，价格更透明</view>
+                <view class="noticedetail">特权4.支持线上缴费和到站缴费，支付更灵活</view>
+                <view class="noticedetail">特权5.一码在手走完检车全程，更方便</view>
+            </view>
+            <view hidden="{{active==1?false:true}}">
+                <view class="noticedetail">
+                    <image src="../../../images/bootips.jpg" mode="widthFix" />
+                </view>
+            </view>
+            <view hidden="{{active==2?false:true}}">
+                <view class="noticedetail">1.行驶证原件</view>
+                <view class="noticedetail">2.有效期内的交强险保单副本以及完税证明</view>
+                <view class="noticedetail">3.单位车辆需携带单位盖章的委托书</view>
+            </view>
+            <view hidden="{{active==3?false:true}}">
+                <view class="noticedetail">1.提前处理交通事故或违章</view>
+                <view class="noticedetail">2.车辆大灯、尾灯、刹车灯无故障</view>
+                <view class="noticedetail">3.车辆无改装</view>
+                <view class="noticedetail">4.三角警示牌</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -2,10 +2,13 @@
 /* pages/addcar/addcar.wxss */
 page {
     background-color: #f8f8f8;
-    ocr-navigator{ height: 100%;
-     margin: 0;
-     padding: 0;
+
+    ocr-navigator {
+        height: 100%;
+        margin: 0;
+        padding: 0;
     }
+
     .cartips {
         background-color: #E9D4D5;
         color: #E93D30;
@@ -22,9 +25,10 @@ page {
         background-color: #f8f8f8;
         box-shadow: 0 0 20rpx #bbb;
         border-radius: 15rpx;
-        
+
         padding: 30rpx 0 0 0;
-        .cartitle{
+
+        .cartitle {
             font-weight: bold;
             color: #565656;
             font-size: 30rpx;
@@ -32,58 +36,155 @@ page {
             margin: 0 40rpx;
 
         }
-        .cartitle::before{
+
+        .cartitle::before {
             background-color: #F00;
             width: 5rpx;
-            height:30rpx;
+            height: 30rpx;
             content: '';
             display: block;
             float: left;
             margin-right: 30rpx;
         }
+
         .drivermessage {
             display: flex;
             margin: 0 40rpx;
             border-bottom: 1px solid #dbdbdb;
+
             .message_label {
-                flex: 2;    
+                flex: 2;
                 color: #A7A7A7;
-                height: 80rpx ;
+                height: 80rpx;
                 line-height: 80rpx;
-               text-indent: 20rpx;
+                text-indent: 20rpx;
             }
 
             .weui-cell {
                 flex: 5;
                 line-height: 80rpx;
-                input{
+
+                input {
                     color: #696969;
                     line-height: 80rpx;
-                    height: 80rpx ;
+                    height: 80rpx;
                 }
-                picker{
+
+                picker {
                     color: #525252;
                     line-height: 80rpx;
-                    height: 80rpx ;
+                    height: 80rpx;
                 }
             }
         }
-        .drivermessage:last-child{border: none;}
+
+        .drivermessage:last-child {
+            border: none;
+        }
 
 
     }
+
     .steps {
         display: flex;
         flex-flow: row warp;
         padding: 20rpx;
         background-color: #fff;
         margin-bottom: 30rpx;
+
         image {
             width: 100%;
         }
-    
+
         /* justify-content:space-around */
+
+
     }
-    
+
+    radio .wx-radio-input {
+        width: 30rpx;
+        height: 30rpx;
+        margin-right:5rpx;
+    }
+
+    radio .wx-radio-input.wx-radio-input-checked {
+        background-color: #2559A0;
+    }
+
+
+    .cu-bar {
+        display: flex;
+    }
+
+    .carbody {
+        margin-bottom: 100rpx;
+    }
+
+    .bookfoot {
+        height: 88rpx;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        background-color: #747474;
+
+        .bookleft {
+            flex: 5;
+            display: flex;
+
+            image {
+                width: 78rpx;
+                height: 78rpx;
+                position: absolute;
+                top: -20rpx;
+                padding: 5rpx;
+                margin-left: 30rpx;
+                background-color: #4a99d8;
+                border-radius: 50%;
+                border: 20rpx solid #747474
+            }
+
+            .bookprice {
+                padding-left: 150rpx;
+                color: #fff;
+                font-size: 36rpx;
+                line-height: 88rpx;
+            }
+        }
+
+        .bookright {
+            flex: 3;
+
+            button {
+                width: 100%;
+                border-radius: none;
+            }
+        }
+    }
+
+
+    checkbox .wx-checkbox-input {
+        width: 30rpx;
+        height:30rpx;
+      }
+      /*checkbox选中后样式  */
+      checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+        background: #2559A0;
+        border-color:#2559A0;
+      }
+      /*checkbox选中后图标样式  */
+      checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+        width: 30rpx;
+        height:30rpx;  
+        line-height: 30rpx;
+        text-align: center;
+        font-size: 22rpx;
+        color: #fff;
+        background: transparent;
+        transform: translate(-50%, -50%) scale(1);
+        -webkit-transform: translate(-50%, -50%) scale(1);
+      }
+
+  
 }
- 

@@ -3,78 +3,113 @@
     <view class="mycar">
         <view class="steps">
             <image src="../../images/booke.png" mode="widthFix" />
-        </view>     
+        </view>
     </view>
-
-     <view class="carmessage">
-              <view class="cartitle">订单信息</view>
-        <view class="carbox">
-            <view class="drivermessage">
-                <view class="message_label">年检车辆:</view>
-                <view class="weui-cell weui-cell_input">
-                    {{bookcarno}}
+    <form bindsubmit="formSubmit">
+        <view class="carmessage">
+            <view class="cartitle">订单信息</view>
+            <view class="carbox">
+                <view class="drivermessage">
+                    <view class="message_label">年检车辆:</view>
+                    <view class="weui-cell weui-cell_input">{{bookcarno}}</view>
                 </view>
-            </view>
-            <view class="drivermessage">
-                <view class="message_label">预约日期:</view>
-                <view class="cardate" class="weui-cell ">
-                    <picker mode="date" value="{{bookdate}}" start="2000-09-01" end="{{bookdate}}" bindchange="bindDateChange">
-                        <view class="picker">{{bookdate}}</view>
-                    </picker>
+                <view class="drivermessage">
+                    <view class="message_label">预约日期:</view>
+                    <view class="cardate" class="weui-cell ">
+                        <picker mode="date" value="{{bookdate}}" start="{{bookdate}}" end="2025-09-01" bindchange="bindDateChange">
+                            <view class="picker">{{bookdate}}</view>
+                        </picker>
+                    </view>
                 </view>
-            </view>
-             <view class="drivermessage">
-                <view class="message_label">预约时段:</view>
-                <view class="cardate" class="weui-cell ">
-                    <picker mode="date" value="{{}}">
-                        <view class="picker">{{}}剩余0</view>
-                    </picker>
+                <view class="drivermessage">
+                    <view class="message_label">预约时段:</view>
+                    <view class="cardate" class="weui-cell ">
+                          <picker bindchange="bindPickerChange" value="{{index}}"  range="{{booklist}}" range-key="timedetail">
+                            <view class="picker">{{booklist[index].timedetail}}</view>
+                        </picker>
+                    </view>
                 </view>
-            </view>
-             <view class="drivermessage">
-                <view class="message_label">预约类型:</view>
-                <view class="weui-cell weui-cell_input">
-                 <block wx:if="{{bookcartype==='0'}}">自主预约</block>
-                 <block wx:else>上门代办 </block>
+                <view class="drivermessage">
+                    <view class="message_label">预约类型:</view>
+                    <view class="weui-cell weui-cell_input">
+                        <radio-group>
+                            <label>
+                                <radio value="" class="wx-radio-input" checked="true" />
+                                <block wx:if="{{bookcartype==='0'}}">自主预约</block>
+                                <block wx:else>上门代办</block>
+                            </label>
+                        </radio-group>
+                    </view>
                 </view>
-            </view>
-             <view class="drivermessage">
-                <view class="message_label">办理地点:</view>
-                <view class="weui-cell weui-cell_input">
-                    {{bookcarname}}
+                <view class="drivermessage">
+                    <view class="message_label">办理地点:</view>
+                    <view class="weui-cell weui-cell_input">{{bookcarname}}</view>
                 </view>
-            </view>
-             <view class="drivermessage">
-                <view class="message_label">详细地址:</view>
-                <view class="weui-cell weui-cell_input">
-                  {{bookcaraddress}}
+                <view class="drivermessage">
+                    <view class="message_label">详细地址:</view>
+                    <view class="weui-cell weui-cell_input">{{bookcaraddress}}</view>
                 </view>
             </view>
         </view>
-    </view>
-
-
-
-
-     <view class="carmessage">
-          
-        <view class="carbox">
-            <view class="drivermessage">
-                <view class="message_label">预约车型:</view>
-                <view class="weui-cell weui-cell_input">
-                    <input class="weui-input" value="" placeholder="请输入手机号码" />
+        <view class="carmessage">
+            <view class="carbox">
+                <view class="drivermessage">
+                    <view class="message_label">预约车型:</view>
+                    <view class="weui-cell weui-cell_input">
+                        <picker bindchange="bindPickerChange" value="{{index}}"  name='aaa' range="{{GoodsList}}" range-key="good_name">
+                            <view class="picker">{{GoodsList[index].good_name}}</view>
+                        </picker>
+                    </view>
                 </view>
-            </view>
-            <view class="drivermessage">
-                <view class="message_label">支付类型:</view>
-                <view class="weui-cell weui-cell_input">
-                    <input class="weui-input" value="" placeholder="请输入验证码" />
+                <view class="drivermessage">
+                    <view class="message_label">支付类型:</view>
+                    <view class="weui-cell weui-cell_input">
+                        <radio-group>
+                            <label>
+                                <radio value="1" class="wx-radio-input"   name='sss'  checked="true" />
+                                微信支付
+                            </label>
+                            <label>
+                                <radio value="2" class="wx-radio-input"  />
+                                线下支付
+                            </label>
+                        </radio-group>
+                    </view>
                 </view>
-            </view>
-               <view class="drivermessage">
-                <view class="message_label">同意支付类型:</view>
-                
+                <view class="drivermessage">
+                    <view class="message_label">
+                        <checkbox-group class="cu-bar" bindchange="boxcheck">
+                            <checkbox name="box_check" checked="{{if_checked}}" class="red round"></checkbox>
+                            <navigator url="/pages/about/about">
+                                我已阅读并同意
+                                <text class="text-blue">《加入协议》</text>
+                            </navigator>
+                        </checkbox-group>
+                    </view>
+                </view>
             </view>
         </view>
-    </view>
+        <!-- 组件引入 -->
+        <view class="carmessage carbody">
+            <booktips></booktips>
+        </view>
+
+        <view class="bookfoot">
+            <view class="bookleft">
+                <image src="../../images/carbook.jpg"  mode="widthFix"/>
+    
+               <view class="bookprice" >{{good_price}}元</view> 
+            </view>
+             <view class="bookright">
+                 <button class="book_btn" form-type="submit"  >
+                     提交预约
+                 </button>
+             </view>
+
+        </view>
+
+
+
+
+    </form>
 </view>

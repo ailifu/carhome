@@ -20,8 +20,8 @@ Page({
     car_linkname: '',
     ownerphone: '',
     image_path: '../../images/cartips.png',
-    codename:'发送验证码',
-    disabled:false,
+    codename: '发送验证码',
+    disabled: false,
     vehicle_type_array: ['小型轿车', '中型轿车', '大型轿车', '小型普通客车', '小型越野客车', '小型专用客车', '微型普通客车', '微型越野客车', '其他年辆']
   }, onLoad() {
 
@@ -38,7 +38,7 @@ Page({
     const rules = {
       car_linkname: {
         required: true,
-        minlength:2
+        minlength: 2
       }, plate_num: {
         required: true,
         minlength: 6
@@ -56,7 +56,7 @@ Page({
         tel: true
       }, code: {
         required: true,
-        minlength:4
+        minlength: 4
       }
     }
     const messages = {
@@ -78,9 +78,9 @@ Page({
       carvin: {
         required: '请填写识别码',
         tel: '请填写正确的识别码'
-      },code: {
+      }, code: {
         required: '请填写验证码'
-       
+
       }
     }
     this.WxValidate = new WxValidate(rules, messages)
@@ -119,7 +119,7 @@ Page({
           car_cate: e.detail.value.vehicle_type,
           car_regtime: e.detail.value.register_date,
           car_linkname: e.detail.value.car_linkname,
-          car_mobile: e.detail.value.ownerphone,  
+          car_mobile: e.detail.value.ownerphone,
           code: e.detail.value.code
         },
       }).then((result) => {
@@ -128,17 +128,17 @@ Page({
           wx.showToast({
             title: '操作成功！', // 标题
             icon: 'success',  // 图标类型，默认success
-            duration: 1500 , // 提示窗停留时间，默认1500ms
+            duration: 1500, // 提示窗停留时间，默认1500ms
             success: (result) => {
               wx.navigateTo({
                 url: '../mycar/mycar',
-                
+
               });
-                
+
             }
           })
-         
-            
+
+
         } else if (result.data.code === 0) {
           wx.showToast({
             title: '车牌重复！', // 标题
@@ -154,12 +154,6 @@ Page({
         }
 
       })
-
-
-
-
-
-
     }
 
   },
@@ -178,12 +172,12 @@ Page({
     /**保存手机号获取验证码 */
 
     let ownerphone = e.detail.value;
-      
-      this.setData({
-        ownerphone
-      });
 
-     
+    this.setData({
+      ownerphone
+    });
+
+
   }, handlecarnum(e) {
     console.log(e);
     // let reg = /^(([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-Z](([0-9]{5}[DF])|([DF]([A-HJ-NP-Z0-9])[0-9]{4})))|([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领][A-Z][A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳使领]))$/
@@ -204,20 +198,20 @@ Page({
         icon: 'none',
       });
 
-    } else if(!(/^1[3456789]\d{9}$/.test(this.data.ownerphone))){
-       
-        wx.showToast({
-          title: '请输入正确手机号',
-          mask: true,
-          icon: 'none',
-        });
-   
+    } else if (!(/^1[3456789]\d{9}$/.test(this.data.ownerphone))) {
+
+      wx.showToast({
+        title: '请输入正确手机号',
+        mask: true,
+        icon: 'none',
+      });
+
     } else {
       request({
         url: "http://carinspect.xgyvip.cn/api/home/user/getCode1234?mobile=15252525252",
         method: "GET",
         data: {
-         // mobile: this.data.ownerphone
+          // mobile: this.data.ownerphone
         },
       }).then((result) => {
         var num = 61;
@@ -225,7 +219,7 @@ Page({
           num--;
           if (num <= 0) {
             clearInterval(timer);
-           _this.setData({
+            _this.setData({
               codename: '重新发送',
               disabled: false
             })
