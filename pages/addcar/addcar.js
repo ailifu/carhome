@@ -109,7 +109,7 @@ Page({
       let vipId = wx.getStorageSync('vipId');
       let user = wx.getStorageSync('user');
       request({
-        url: "http://carinspect.xgyvip.cn/api/home/user/addcar",
+        url: "https://carinspect.xgyvip.cn/api/home/user/addcar",
         method: "POST",
         data: {
           vipId: vipId,
@@ -208,10 +208,10 @@ Page({
 
     } else {
       request({
-        url: "http://carinspect.xgyvip.cn/api/home/user/getCode1234?mobile=15252525252",
+        url: "https://carinspect.xgyvip.cn/api/home/user/getCode",
         method: "GET",
         data: {
-          // mobile: this.data.ownerphone
+          mobile: this.data.ownerphone
         },
       }).then((result) => {
         var num = 61;

@@ -1,0 +1,18 @@
+<!-- pages/order/order.wxml -->
+<view class="order">
+  <view class="orderlist">
+    <block wx:for="{{orderlist}}" wx:key="order_sn">
+      <view class="orderDetail">
+        <view>订单编号:<text >  {{item.order_sn}}</text></view>
+        <view>车牌号:<text > {{item.car_info.car_no}}</text></view>
+        <view>订单状态：
+          <block wx:if="{{item.status===0}}"><text style="color:blue">待付款</text></block>
+          <block wx:if="{{item.status===1}}"><text style="color:#f60">已付款待检测</text></block>
+          <block wx:if="{{item.status===2}}"><text style="color:#f00">已检测待确认</text></block>
+          <block wx:if="{{item.status===3}}"><text style="color:green">订单完成</text></block>
+        </view>
+        <view>订单日期：<text >{{item.create_time}}</text></view>
+      </view>
+    </block>
+  </view>
+</view>

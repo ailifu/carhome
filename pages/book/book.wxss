@@ -90,6 +90,7 @@ page radio .wx-radio-input {
 }
 page radio .wx-radio-input.wx-radio-input-checked {
   background-color: #2559A0;
+  border: 1rpx solid #2559A0;
 }
 page .cu-bar {
   display: flex;
@@ -128,11 +129,18 @@ page .bookfoot .bookleft .bookprice {
   line-height: 88rpx;
 }
 page .bookfoot .bookright {
-  flex: 3;
+  flex: 2;
 }
 page .bookfoot .bookright button {
   width: 100%;
   border-radius: none;
+  background: #4a99d8;
+  color: #fff;
+  font: normal 34rpx sans-serif;
+  padding: 0;
+  margin: 0;
+  height: 88rpx;
+  line-height: 88rpx;
 }
 page checkbox .wx-checkbox-input {
   width: 30rpx;
@@ -141,6 +149,7 @@ page checkbox .wx-checkbox-input {
 page checkbox .wx-checkbox-input.wx-checkbox-input-checked {
   background: #2559A0;
   border-color: #2559A0;
+  border: 1rpx solid #2559A0;
 }
 page checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   width: 30rpx;

@@ -1,5 +1,6 @@
 <!-- pages/list/list.wxml -->
 <view>
+ 
   <view class="listbody">
     <view class="steps">
       <image src="../../images/listtips.png" mode="widthFix" />

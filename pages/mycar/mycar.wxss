@@ -17,7 +17,7 @@ page .mycar .addcar {
 }
 page .listbox {
   display: flex;
-  margin-bottom: 20rpx;
+  margin-bottom: 10rpx;
   background-color: #fff;
   padding: 20rpx;
 }

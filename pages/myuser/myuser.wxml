@@ -25,7 +25,7 @@
   <view class="userinfo-main" >
  <view  class="userinfo-tips">
    <view class="allorder">
-    <view ><image src="../../images/all.png" mode="widthFix" /></view>
+    <view  bindtap="bindnavtoorder"><image src="../../images/all.png" mode="widthFix" /></view>
    全部订单</view> <view class="allbook"><view ><image src="../../images/book.png" mode="widthFix" /></view>预约码</view>
  </view>
   </view>
@@ -63,7 +63,7 @@
   
   <view class="hr"></view>
   <view class='item'>
-    <view class="title">关于牛审</view>
+    <view class="title">关于我们</view>
     <view class="detail2">
       <text> ></text>
     </view>

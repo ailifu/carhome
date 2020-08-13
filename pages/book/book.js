@@ -143,7 +143,7 @@ Page({
   },
   caletime() {
     request({
-      url: "http://carinspect.xgyvip.cn/api/home/store/getinterval",
+      url: "https://carinspect.xgyvip.cn/api/home/store/getinterval",
       data: {
         storeid: this.data.bookstoreid,
         date: this.data.bookdate
@@ -184,6 +184,7 @@ Page({
   bindPickerChange: function (e) {
     // console.log('picker发送选择改变，携带值为', e.detail)
     let element;
+    let good_id;
     for (let index = 0; index < this.data.GoodsList.length; index++) {
       if (e.detail.value * 1 === index * 1) {
         element = this.data.GoodsList[index].good_price;
@@ -192,7 +193,7 @@ Page({
     }
     this.setData({
       good_price: element,
-      good_id,
+      good_id:good_id,
       index: e.detail.value
     })
   },
@@ -212,8 +213,6 @@ Page({
   },
   formSubmit: function (e) {
     var vipid = wx.getStorageSync('vipId')
-
-
     const pargrams = {
       vipid: vipid,
       ids: this.data.good_id,
@@ -225,7 +224,7 @@ Page({
     }
 
     request({
-      url: "http://carinspect.xgyvip.cn/api/home/check/fastbuy",
+      url: "https://carinspect.xgyvip.cn/api/home/check/fastbuy",
       data: pargrams,
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded' }
@@ -234,10 +233,12 @@ Page({
       let { msg } = result.data;
       let { order_id } = result.data.data;
       let { openid } = wx.getStorageSync('user');
-      console.log(msg);
+     // console.log(msg);
+
+       //这部分代码是选择线上支付执行开始
       wx.showModal({
         title: msg,
-        content: '订单已提交',
+        content: '订单提交成功',
         showCancel: true,
         cancelText: '取消',
         cancelColor: '#000000',
@@ -246,7 +247,7 @@ Page({
         success: (result) => {
           if (result.confirm) {
             request({
-              url: "http://carinspect.xgyvip.cn/api/pay/check/paywx",
+              url: "https://carinspect.xgyvip.cn/api/pay/check/paywx",
               data: {
                 order_id,
                 openid
@@ -254,41 +255,65 @@ Page({
               method: "POST",
               header: { 'content-type': 'application/x-www-form-urlencoded' }
             }).then((result) => {
-           
-               let { appId,timeStamp,nonceStr,signType,paySign }=result.data.data;
-                console.log(appId,timeStamp,nonceStr,signType,paySign);
-              let prepay_id=result.data.data.package;
+              let { appId, timeStamp, nonceStr, signType, paySign } = result.data.data;
+              console.log(appId, timeStamp, nonceStr, signType, paySign);
+              let prepay_id = result.data.data.package;
+              wx.requestPayment({
+                timeStamp: timeStamp, // 时间戳，必填（后台传回）
+                nonceStr: nonceStr, // 随机字符串，必填（后台传回）
+                package: prepay_id, // 统一下单接口返回的 prepay_id 参数值，必填（后台传回）
+                signType: 'MD5', // 签名算法，非必填，（预先约定或者后台传回）
+                paySign: paySign, // 签名 ，必填 （后台传回）
+                success: function (res) { // 成功后的回调函数
+                  // do something
+                  wx.showModal({
+                    title: '支付成功',
+                    content: '',
+                    showCancel: true,
+                    cancelText: '取消',
+                    cancelColor: '#000000',
+                    confirmText: '确定',
+                    confirmColor: '#3CC51F',
+                    success: (result) => {
+                      if (result.confirm) {
+                        wx.navigateTo({
+                          url: '../order/order',
+                        });
+                      }
+                    },
 
-                wx.requestPayment({
-                  timeStamp : timeStamp, // 时间戳，必填（后台传回）
-                  nonceStr : nonceStr, // 随机字符串，必填（后台传回）
-                  package : prepay_id, // 统一下单接口返回的 prepay_id 参数值，必填（后台传回）
-                  signType : 'MD5', // 签名算法，非必填，（预先约定或者后台传回）
-                  paySign  : paySign, // 签名 ，必填 （后台传回）
-                  success:function(res){ // 成功后的回调函数
-                      // do something
-                      console.log(res);
-                    
-                     // {errMsg: "requestPayment:ok"}
- 
-                  }
+                  });
+                }, fail: () => {
+                  console.log(msg);
+                  wx.showModal({
+                    title: msg,
+                    content: '支付失败',
+                    showCancel: false,
+
+                    confirmText: '确定',
+                    confirmColor: '#3CC51F'
+                  })
+
+                }
+
               })
 
 
 
 
-                
+
 
             });
-          } }
+          }
+        }
       });
-
+       //这部分代码是选择线上支付执行结束
 
     })
   },
   getGoodsList() {
     request({
-      url: "http://carinspect.xgyvip.cn/api/home/store/getGoodsList",
+      url: "https://carinspect.xgyvip.cn/api/home/store/getGoodsList",
       data: {
         storeid: this.data.bookstoreid,
       }

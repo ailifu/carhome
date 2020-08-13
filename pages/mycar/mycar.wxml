@@ -1,22 +1,25 @@
 <view>
+ 
   <view class="mycar">
-    <view class="steps">
-      <image src="../../images/listtips2.png" mode="widthFix" />
-    </view>
+    <block wx:if="{{tabindex===true}}">
+      <view class="steps">
+        <image src="../../images/listtips2.png" mode="widthFix" />
+      </view>
+    </block>
     <navigator class="addcar" url="../addcar/addcar">添加车辆</navigator>
   </view>
   <view class="listbody">
-    <view class="listbox" wx:for="{{cardetail}}"  wx:key="index" data-id="{{item.id}}">
+    <view class="listbox" wx:for="{{cardetail}}" wx:key="index" data-id="{{item.id}}">
       <view class="listimage">
         <image src="../../images/cardemo.png " mode="scaleToFill"></image>
       </view>
-      <view class="listnote" catchtap="clickone" data-bookcarid='{{item.id}}'  data-bookcarno='{{item.car_no}}'>
+      <view class="listnote" catchtap="clickone" data-bookcarid='{{item.id}}' data-bookcarno='{{item.car_no}}'>
         <view class="listtitle">{{item.car_no}}</view>
         <view>车主姓名：{{item.car_linkname}}</view>
         <view>车辆类型：{{item.car_cate}}</view>
-        <view class="listbook" catchtap="clickedit">
+        <!-- <view class="listbook" catchtap="clickedit" data-careditid="{{item.id}}">
           <image src="../../images/caredit.png" mode="widthFix" />
-        </view>
+        </view> -->
       </view>
     </view>
   </view>

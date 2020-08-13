@@ -35,11 +35,18 @@ Page({
     //图片宽度 
     imgwidth: 750,
     //默认 
-    current: 0, time: ''
+    current: 0, time: '',
+    openidaa: 0,
+    vipcode: 1111111,
+    isHide: false,
+    openid:''
   }, onLoad: function (options) {
-     wx.showToast({
+    this.getopenid();
+    let vipcode = wx.getStorageSync('vipcode');
+    wx.showToast({
       title: '数据加载中',
       icon: 'loading',
+      duration:2000
     });
     var TIME = util.formatTime(new Date());
     // console.log(TIME);
@@ -49,15 +56,14 @@ Page({
     })
     
   }, newselecttabs(e) {
- 
     let newactive = e.detail
-  
+
     let { tabs } = this.data //let tabs= this.data.tabs意思是一样
-  
+
     tabs.forEach((v, i) => {
       i === newactive ? v.active = true : v.active = false
     });
-  
+
     this.setData(
       { tabs }
     )
@@ -124,7 +130,10 @@ Page({
       success: function (res) {
         // console.log(JSON.stringify(res))
         var latitude = res.latitude
+        console.log(latitude);
         var longitude = res.longitude
+        wx.setStorageSync('latitude', latitude);
+        wx.setStorageSync('longitude', longitude);
         var speed = res.speed
         var accuracy = res.accuracy;
         vm.getLocal(latitude, longitude)
@@ -143,7 +152,7 @@ Page({
         longitude: longitude
       },
       success: function (res) {
-      //  console.log(JSON.stringify(res));
+        //  console.log(JSON.stringify(res));
         let province = res.result.ad_info.province
         let city = res.result.ad_info.city
         let district = res.result.ad_info.district
@@ -159,7 +168,7 @@ Page({
           latitude: latitude,
           longitude: longitude
         })
-       
+
       },
       fail: function (res) {
         console.log(res);
@@ -191,7 +200,54 @@ Page({
     this.setData({ current: e.detail.current })
   }, onHide() {
     console.log('onReady监听页面初次渲染完成');
-    
+
+  },
+  getopenid(){
+    let that=this
+    wx.login({
+      timeout: 10000,
+      success: (result) => {
+          let that=this;
+        
+          wx.setStorageSync('vipcode', result.code);
+          wx.request({
+              url: 'https://carinspect.xgyvip.cn/api/home/public/getOpenid',
+              data: {
+                  code: result.code
+              }, header: {
+                  'content-type': 'application/x-www-form-urlencoded' // 默认值
+              },
+              method: "POST",
+              success(res) {
+                wx.setStorageSync('openidceshi', '测是我是否能缓存成功');
+                  wx.setStorageSync('user', res.data.data.user);
+                  wx.setStorageSync('openid', res.data.data.user.openid);
+                  let openid = res.data.data.user.openid;
+                  that.setData({
+                    openid: openid,
+                    
+                  })
+                  wx.request({
+                      url: 'https://carinspect.xgyvip.cn/api/home/user/login',
+                      data: {
+                          user_nickname: 'xxxx',
+                          openid:res.data.data.user.openid,
+                          avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqVMLKa5NXlevpaD1JOatHHqg4XRlMO6ysHoTvc8s1q33xe51sSBZKSqvAYwwAJ4JyXWURBtyZX9Q/132',
+                          mobile: '13888888888',
+                          sex: '0'
+                      }, header: {
+                          'content-type': 'application/x-www-form-urlencoded' // 默认值
+                      },
+                      method: "POST",
+                      success(res) {
+                          wx.setStorageSync('vipId', res.data.data.vipId);
+                          
+                      }
+                  })
+              }
+          })
+    }
+  });
   }
 
 

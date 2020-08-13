@@ -1,5 +1,7 @@
 <!-- index.wxml -->
 <view>
+ 
+ 
   <view class='swiper'>
     <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" duration="{{duration}}" interval='{{interval}}' indicator-active-color="#007aff" bindchange="bindchange" circular="{{circular}}" style="height:{{imgheights[current]}}rpx;">
       <block wx:for='{{imgUrls}}' wx:key="index">

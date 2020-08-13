@@ -13,7 +13,7 @@ Page({
   //事件处理函数
   handlemycar(e) {
     wx.navigateTo({
-      url: '../mycar/mycar'
+      url: '../mycar/mycar?tab=false'
     })
   },
   //事件处理函数
@@ -71,14 +71,25 @@ Page({
                   // console.log("用户的code:" + res.code);
                   // 可以传给后台，再经过解析获取用户的 openid
                   // 或者可以直接使用微信的提供的接口直接获取 openid ，方法如下：
-                  wx.request({
+                   
                     // 自行补上自己的 APPID 和 SECRET
-                    url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx9c4eff2a85fcd7c8&secret=a7d99b3f3fdc05b0d33704fb54dc051e&js_code=' + res.code + '&grant_type=authorization_code',
-                    success: res => {
-                      // 获取到用户的 openid
-                      console.log("用户的openid:" + res.data.openid);
-                    }
-                  });
+                   
+                    wx.request({
+                      url: 'https://carinspect.xgyvip.cn/api/home/public/getOpenid',
+                      data: {
+                          code:res.code
+                      }, header: {
+                          'content-type': 'application/x-www-form-urlencoded' // 默认值
+                      },
+                      method: "POST",
+                      success(res) {
+                         
+                          wx.setStorageSync('user', res.data.data.user);
+                          wx.setStorageSync('openid', res.data.data.user.openid);
+                      }
+
+                    });
+ 
                 }
               });
             }
@@ -126,48 +137,15 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+ 
+  bindnavtoorder() {
+    wx.navigateTo({
+      url: '../order/order',
+      
+    });
+      
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  }
+   
 })

@@ -2,7 +2,9 @@
   "pages":[
     "pages/index/index",
     "pages/feedback/feedback",
+    "pages/order/order",
     "pages/mycar/mycar",
+    "pages/caredit/caredit",
     "pages/book/book",
     "pages/addcar/addcar",
     "pages/list/list",
