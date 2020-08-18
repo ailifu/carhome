@@ -1,8 +1,9 @@
 /* pages/mycar/mycar.wxss */
 page {
-  background-color: #f8f8f8;
+  background-color: #f8f8f8;padding-bottom: 150rpx;
 }
-page .mycar .addcar {
+ 
+ .addcar {
   background-color: #2559A0;
   height: 80rpx;
   width: 690rpx;
@@ -14,6 +15,22 @@ page .mycar .addcar {
   color: #Fff;
   text-align: center;
   line-height: 80rpx;
+  margin-top: 20rpx;
+}
+.listbody{ min-height: 300rpx;}
+.addcarmore {
+  background-color: #2559A0;
+  height: 80rpx;
+  width: 690rpx;
+  position: relative;
+ 
+  left: 30rpx;
+  border-radius: 15rpx;
+  font-size: 36rpx;
+  color: #Fff;
+  text-align: center;
+  line-height: 80rpx;
+  margin-top: 40rpx;
 }
 page .listbox {
   display: flex;

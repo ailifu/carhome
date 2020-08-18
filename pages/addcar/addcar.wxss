@@ -27,7 +27,7 @@ page .carmessage .carcam {
   text-align: center;
   height: 362rpx;
   width: 560rpx;
-  margin: 0 auto  40rpx;
+  margin: 0 auto 40rpx;
   overflow: hidden;
   padding: 30rpx 0 0;
 }
@@ -74,7 +74,7 @@ page .carmessage .drivermessage {
 page .carmessage .drivermessage .message_label {
   flex: 2;
   color: #A7A7A7;
-  height: 80rpx ;
+  height: 80rpx;
   line-height: 80rpx;
   text-indent: 20rpx;
 }
@@ -85,12 +85,12 @@ page .carmessage .drivermessage .weui-cell {
 page .carmessage .drivermessage .weui-cell input {
   color: #696969;
   line-height: 80rpx;
-  height: 80rpx ;
+  height: 80rpx;
 }
 page .carmessage .drivermessage .weui-cell picker {
   color: #525252;
   line-height: 80rpx;
-  height: 80rpx ;
+  height: 80rpx;
 }
 page .carmessage .drivermessage:last-child {
   border: none;
@@ -115,7 +115,7 @@ page .carmessage .drivermessage:last-child {
   position: relative;
 }
 .weuiyzm .weui-input {
-  flex: 0 0 160rpx;
+  flex: 0 0 180rpx;
 }
 .weuiyzm .codeBtn {
   position: absolute;

@@ -1,4 +1,5 @@
 const app = getApp()
+import { request } from "../../request/index.js"
 Page({
 
   /**
@@ -65,33 +66,7 @@ Page({
               // 用户已经授权过,不需要显示授权页面,所以不需要改变 isHide 的值
               // 根据自己的需求有其他操作再补充
               // 我这里实现的是在用户授权成功后，调用微信的 wx.login 接口，从而获取code
-              wx.login({
-                success: res => {
-                  // 获取到用户的 code 之后：res.code
-                  // console.log("用户的code:" + res.code);
-                  // 可以传给后台，再经过解析获取用户的 openid
-                  // 或者可以直接使用微信的提供的接口直接获取 openid ，方法如下：
-                   
-                    // 自行补上自己的 APPID 和 SECRET
-                   
-                    wx.request({
-                      url: 'https://carinspect.xgyvip.cn/api/home/public/getOpenid',
-                      data: {
-                          code:res.code
-                      }, header: {
-                          'content-type': 'application/x-www-form-urlencoded' // 默认值
-                      },
-                      method: "POST",
-                      success(res) {
-                         
-                          wx.setStorageSync('user', res.data.data.user);
-                          wx.setStorageSync('openid', res.data.data.user.openid);
-                      }
-
-                    });
- 
-                }
-              });
+             
             }
           });
         } else {
@@ -112,10 +87,29 @@ Page({
       // 获取到用户的信息了，打印到控制台上看下
       console.log("用户的信息如下：");
       console.log(e.detail.userInfo);
-      //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
+      let { gender, nickName, avatarUrl } =e.detail.userInfo;
+      let openid=wx.getStorageSync('openid');
+        
+      wx.request({
+        url: 'https://carinspect.xgyvip.cn/api/home/user/login',
+        data: {
+          user_nickname:nickName,
+          openid: openid,
+          avatar:avatarUrl,
+          sex: gender,
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', // 默认值
+        },
+        method: 'POST',
+        success(res) {
+          wx.setStorageSync('vipId', res.data.data.vipId);
+        },
+      }); 
+
       that.setData({
         isHide: false,
-        userInfo: e.detail.userInfo
+        userInfo: e.detail.userInfo,
       });
     } else {
       //用户按了拒绝按钮
@@ -145,7 +139,13 @@ Page({
     });
       
 
-  },
+  },handleaboutus(){
+    wx.navigateTo({
+      url: '../about/about',
+      
+    });
+      
 
+  }
    
 })

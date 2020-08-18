@@ -62,7 +62,7 @@
  
   
   <view class="hr"></view>
-  <view class='item'>
+  <view class='item'  bindtap='handleaboutus'>
     <view class="title">关于我们</view>
     <view class="detail2">
       <text> ></text>

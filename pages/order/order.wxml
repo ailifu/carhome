@@ -14,5 +14,6 @@
         <view>订单日期：<text >{{item.create_time}}</text></view>
       </view>
     </block>
+    
   </view>
 </view>

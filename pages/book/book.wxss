@@ -123,7 +123,7 @@ page .bookfoot .bookleft image {
   border: 20rpx solid #747474;
 }
 page .bookfoot .bookleft .bookprice {
-  padding-left: 150rpx;
+  padding-left: 160rpx;
   color: #fff;
   font-size: 36rpx;
   line-height: 88rpx;

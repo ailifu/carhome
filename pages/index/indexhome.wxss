@@ -1,0 +1,53 @@
+@import "/base.wxss";
+
+.swiper {
+  position: relative;
+  margin-bottom: 10rpx;
+  border-bottom: 20rpx solid #f2f2f2;
+}
+
+.swiper image {
+  width: 100%;
+  height: auto;
+}
+
+.swiper-image {
+  height: 100%;
+  width: 100%;
+}
+
+.slide-image {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.datebox {
+  background: #fff;
+  border-radius: 10rpx;
+  width: 710rpx;
+  height: 440rpx;
+  position: absolute;
+  bottom: 20rpx;
+  left: 20rpx;
+  right: 20rpx;
+  overflow: hidden;
+}
+
+.imagebox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40rpx 5px;
+  border-bottom: 20rpx solid #f2f2f2;
+}
+
+.imagedetail {
+  margin: 0 10rpx;
+}
+.userpowerbox{
+  position: absolute; 
+  width: 710rpx ;
+  bottom: 0;
+  
+}

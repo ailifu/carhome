@@ -25,7 +25,7 @@
                     <view class="message_label">预约时段:</view>
                     <view class="cardate" class="weui-cell ">
                           <picker bindchange="bindPickerChange" value="{{index}}"  range="{{booklist}}" range-key="timedetail">
-                            <view class="picker">{{booklist[index].timedetail}}</view>
+                            <view class="picker">{{bookselect}}</view>
                         </picker>
                     </view>
                 </view>
@@ -56,23 +56,23 @@
                 <view class="drivermessage">
                     <view class="message_label">预约车型:</view>
                     <view class="weui-cell weui-cell_input">
-                        <picker bindchange="bindPickerChange" value="{{index}}"  name='aaa' range="{{GoodsList}}" range-key="good_name">
-                            <view class="picker">{{GoodsList[index].good_name}}</view>
+                        <picker bindchange="bindGoodsList" value="{{indexgood}}"  range="{{GoodsList}}" range-key="good_name">
+                            <view class="picker">{{GoodsList[indexgood].good_name}}</view>
                         </picker>
                     </view>
                 </view>
                 <view class="drivermessage">
                     <view class="message_label">支付类型:</view>
-                    <view class="weui-cell weui-cell_input">
-                        <radio-group>
+                    <view class="weui-cell weui-cell_input" >
+                        <radio-group  bindchange="listenerRadioGroup"> 
                             <label>
-                                <radio value="1" class="wx-radio-input"   name='sss'  checked="true" />
+                                <radio value="1" class="wx-radio-input"   name='bookType'  checked="true" />
                                 微信支付
                             </label>
-                            <label>
+                            <!-- <label>
                                 <radio value="2" class="wx-radio-input"  />
                                 线下支付
-                            </label>
+                            </label> -->
                         </radio-group>
                     </view>
                 </view>

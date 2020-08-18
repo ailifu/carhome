@@ -111,6 +111,20 @@
 					"id": -1,
 					"name": "pages/myuser/myuser",
 					"pathName": "pages/myuser/myuser",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/indexhome/indexhome",
+					"pathName": "pages/indexhome/indexhome",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order/order",
+					"pathName": "pages/order/order",
 					"scene": null
 				}
 			]

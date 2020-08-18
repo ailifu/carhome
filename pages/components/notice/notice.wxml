@@ -7,8 +7,7 @@
   <view class="noticebody">
     <view class="noticedetail" hidden="{{active==0?false:true}}">
       <view class="noticedetail">1.机动车行驶证原件(正、 副本)</view>
-      <view class="noticedetail">2.有效期内的交强险副本原件(含车船税、挂车提供车船税完税证明原件)</view>
-      <view class="noticedetail">3.单位车辆提供单位出具的委托书(盖公章)</view>
+      <view class="noticedetail">2.有效期内的交强险副本原件(含车船税)</view>
     </view>
     <view hidden="{{active==1?false:true}}">
       <view class="noticedetail">1.注册登记日期超过6年的私家车（6年后每年一检）</view>

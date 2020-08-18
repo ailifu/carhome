@@ -111,6 +111,9 @@ page {
     height: 100%;
     margin-bottom: 50rpx;
   }
+  .carbox{
+    padding: 30rpx 0 0 0;
+  }
   .weuiyzm {
     display: flex;
     position: relative;

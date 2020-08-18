@@ -1,0 +1,6 @@
+/* pages/about/about.wxss */
+.about{ 
+  line-height: 80rpx; font-size: 28rpx;
+  color: #888;
+  padding: 40rpx;
+}
