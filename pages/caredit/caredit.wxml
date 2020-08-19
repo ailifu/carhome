@@ -14,28 +14,28 @@
              <view class="drivermessage">
                 <view class="message_label">车牌号码:</view>
                 <view class="weui-cell weui-cell_input">
-                    <input class="weui-input" name="plate_num" value="{{plate_num}}" placeholder="请输入车牌号码"   />
+                    <input class="weui-input" name="car_no" value="{{car_no}}" placeholder="请输入车牌号码"   />
                 </view>
             </view>
             <view class="drivermessage">
                 <view class="message_label">识别代码:</view>
                 <view class="weui-cell weui-cell_input">
-                    <input class="weui-input" value="{{carvin}}" name="carvin" placeholder="车辆识别代号后六位" />
+                    <input class="weui-input" value="{{car_vin}}" name="car_vin" placeholder="车辆识别代号后六位" />
                 </view>
             </view>
             <view class="drivermessage">
                 <view class="message_label">注册日期:</view>
                 <view class="cardate" class="weui-cell ">
-                    <picker mode="date" value="{{register_date}}" name="register_date" start="2000-09-01" end="2025-09-01" bindchange="bindDateChange">
-                        <view class="picker">{{register_date}}</view>
+                    <picker mode="date" value="{{car_regtime}}" name="car_regtime" start="2000-09-01" end="2025-09-01" bindchange="bindDateChange">
+                        <view class="picker">{{car_regtime}}</view>
                     </picker>
                 </view>
             </view>
             <view class="drivermessage">
                 <view class="message_label">车辆类型:</view>
                 <view class="weui-cell">
-                    <picker bindchange="bindPickerChange" value="{{vehicle_type}}" name="vehicle_type" range="{{vehicle_type_array}}">
-                        <view class="picker">{{vehicle_type}}</view>
+                    <picker bindchange="bindPickerCartype" value="{{index}}" name="car_cate" range="{{vehicle_type_array}}">
+                        <view class="picker">{{car_cate}}</view>
                     </picker>
                 </view>
             </view>
@@ -46,7 +46,7 @@
             <view class="drivermessage">
                 <view class="message_label">手机号码:</view>
                 <view class="weui-cell weui-cell_input">
-                    <input class="weui-input" value="{{ownerphone}}" placeholder="请输入手机号码"  bindinput="getPhone" name="ownerphone" />
+                    <input class="weui-input" value="{{car_mobile}}" placeholder="请输入手机号码"  bindinput="getPhone" name="car_mobile" />
                 </view>
             </view>
             <view class="drivermessage">
@@ -63,7 +63,7 @@
     </view>
     <view class="addcarbox" >
     <button class="addcar"  form-type="submit"  style="height: 80rpx;padding:0;width: 690rpx;" >
-        添加
+       修改汽车信息
     </button>
     </view>
     </form>

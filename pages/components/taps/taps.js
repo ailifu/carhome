@@ -100,7 +100,7 @@ Component({
       {
         id: 15,
         name: '15:00-16:00',
-        tips: '上午',
+        tips: '下午',
       },
       {
         id: 16,
@@ -119,6 +119,7 @@ Component({
     datetips: datetips,
     booktime: currentTimes,
     cartype: 0,
+    isSubmit: false,
   },
   properties: {
     //选项卡传值切换，接受父组件的值
@@ -139,19 +140,33 @@ Component({
       this.triggerEvent('tabsselect', tabsnew);
     },
     appointmentfunc() {
-      console.log(currentTimes,this.data.booktime,'111');
-      if (
-        (this.data.datetips === '今天') &
-        (this.data.booktime < currentTimes)
-      ) {
-        wx.showToast({
-          title: '时间选择错误，清重新选择',
-          icon: 'none',
-          image: '',
-          duration: 1500,
+      console.log(
+        this.data.datetips,
+        currentTimes,
+        this.data.booktime,
+        'ceshi'
+      );
+      if (this.data.datetips != '今天') {
+        let info = this.data.dates;
+        wx.navigateTo({
+          url:
+            '../list/list' +
+            '?date=' +
+            info +
+            '&time=' +
+            this.data.booktime +
+            '&cartype=' +
+            this.data.cartype,
         });
       } else {
-        if (newdate <= this.data.dates) {
+        if (this.data.booktime < currentTimes) {
+          wx.showToast({
+            title: '时间选择错误，清重新选择',
+            icon: 'none',
+            image: '',
+            duration: 1500,
+          });
+        } else {
           let info = this.data.dates;
           wx.navigateTo({
             url:
@@ -165,6 +180,22 @@ Component({
           });
         }
       }
+
+      // if (
+      //   (this.data.datetips === '今天') &
+      //   (this.data.booktime < currentTimes)
+      // ) {
+      //   wx.showToast({
+      //     title: '时间选择错误，清重新选择',
+      //     icon: 'none',
+      //     image: '',
+      //     duration: 1500,
+      //   });
+      // } else {
+      //   if (newdate <= this.data.dates) {
+
+      //   }
+      // }
     },
 
     //  点击日期组件确定事件
@@ -188,12 +219,24 @@ Component({
         } else {
           day = '明天';
         }
+      } else if (day < 0) {
+        day = '今天';
+        wx.showToast({
+          title: '日期选择错误',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: false,
+          success: (result) => {
+            this.setData({
+              dates: newdate,
+              datetips: day,
+            });
+          },
+        });
       } else {
         day = day + '天后';
       }
-
-      // console.log("day = ", day);
-
       this.setData({
         dates: e.detail.value,
         datetips: day,
@@ -207,11 +250,33 @@ Component({
       let bookid = e.detail.value;
       let bookjsid = this.data.objectArray;
       bookjsid.forEach((element, i) => {
-        if (bookid * 1 === i) {
-          console.log(element.id);
+        if (vmthat.data.datetips != '今天') {
           vmthat.setData({
             booktime: element.id,
+            isSubmit: false,
           });
+        } else {
+          console.log('是今天');
+          if (bookid * 1 === i) {
+            if (element.id * 1 < date.getHours() * 1) {
+              wx.showToast({
+                title: '时间选择错误，请重新选择',
+                icon: 'none',
+                image: '',
+                duration: 1500,
+                mask: false,
+                success: (result) => {
+                  vmthat.setData({
+                    isSubmit: false,
+                  });
+                },
+              });
+            } else {
+              vmthat.setData({
+                isSubmit: false,
+              });
+            }
+          }
         }
       });
 

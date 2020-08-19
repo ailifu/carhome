@@ -1,0 +1,20 @@
+@import "/base.wxss";
+page{
+  width: 100vw;
+  height: 100vh;
+ background-color: #f2f2f2;
+}
+.userpowerbox{
+  position: absolute; 
+  width: 710rpx ;
+  bottom: 20rpx;
+  left: 20rpx;
+  height: 300rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.content{
+  line-height: 100rpx;
+  text-align: center;
+  color: #aaa;
+}

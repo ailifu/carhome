@@ -1,7 +1,9 @@
 {
   "pages":[
     "pages/index/indexhome",
+    "pages/empower/index",
     "pages/feedback/feedback",
+    "pages/orderdetail/orderdetail",
     "pages/about/about",
     "pages/order/order",
     "pages/mycar/mycar",

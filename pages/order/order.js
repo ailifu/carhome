@@ -28,7 +28,6 @@ Page({
       });
     });
     wx.stopPullDownRefresh();
-      
   },
   onReachBottom(e) {
     if (this.data.pages >= this.totalPages) {
@@ -40,15 +39,18 @@ Page({
       this.data.pages++;
       this.getOderlist();
     }
-  }, onPullDownRefresh(e) {
+  },
+  onPullDownRefresh(e) {
     console.log(e);
-    
+
     this.setData({
       pages: 1,
-      orderlist:[]
-    })
+      orderlist: [],
+    });
     this.getOderlist();
-    
+  }, orderDetail(e) {
+    let orderid = { orderid: e.currentTarget.dataset.orderid }
+    navigation.navigateTo('/pages/orderdetail/orderdetail', orderid);
+ 
    }
-
 });

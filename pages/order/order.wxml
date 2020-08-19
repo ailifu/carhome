@@ -2,7 +2,7 @@
 <view class="order">
   <view class="orderlist">
     <block wx:for="{{orderlist}}" wx:key="order_sn">
-      <view class="orderDetail">
+      <view class="orderDetail" bindtap="orderDetail" data-orderId="{{item.order_id}}">
         <view>订单编号:<text >  {{item.order_sn}}</text></view>
         <view>车牌号:<text > {{item.car_info.car_no}}</text></view>
         <view>订单状态：

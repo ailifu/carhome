@@ -24,7 +24,7 @@
                 <view class="drivermessage">
                     <view class="message_label">预约时段:</view>
                     <view class="cardate" class="weui-cell ">
-                          <picker bindchange="bindPickerChange" value="{{index}}"  range="{{booklist}}" range-key="timedetail">
+                        <picker bindchange="bindPickerChange" value="{{index}}" range="{{booklist}}" range-key="timedetail">
                             <view class="picker">{{bookselect}}</view>
                         </picker>
                     </view>
@@ -56,23 +56,23 @@
                 <view class="drivermessage">
                     <view class="message_label">预约车型:</view>
                     <view class="weui-cell weui-cell_input">
-                        <picker bindchange="bindGoodsList" value="{{indexgood}}"  range="{{GoodsList}}" range-key="good_name">
+                        <picker bindchange="bindGoodsList" value="{{indexgood}}" range="{{GoodsList}}" range-key="good_name">
                             <view class="picker">{{GoodsList[indexgood].good_name}}</view>
                         </picker>
                     </view>
                 </view>
                 <view class="drivermessage">
                     <view class="message_label">支付类型:</view>
-                    <view class="weui-cell weui-cell_input" >
-                        <radio-group  bindchange="listenerRadioGroup"> 
+                    <view class="weui-cell weui-cell_input">
+                        <radio-group bindchange="listenerRadioGroup">
                             <label>
-                                <radio value="1" class="wx-radio-input"   name='bookType'  checked="true" />
+                                <radio value="1" class="wx-radio-input" name='bookType' checked="true" />
                                 微信支付
                             </label>
-                            <!-- <label>
-                                <radio value="2" class="wx-radio-input"  />
-                                线下支付
-                            </label> -->
+                            <label>
+                                <radio value="2" class="wx-radio-input" />
+                                免费预约
+                            </label>
                         </radio-group>
                     </view>
                 </view>
@@ -93,23 +93,16 @@
         <view class="carmessage carbody">
             <booktips></booktips>
         </view>
-
         <view class="bookfoot">
             <view class="bookleft">
-                <image src="../../images/carbook.jpg"  mode="widthFix"/>
-    
-               <view class="bookprice" >{{good_price}}元</view> 
+                <image src="../../images/carbook.jpg" mode="widthFix" />
+                <view class="bookprice">
+             {{pay_type==2?"0.00":good_price}}
+            元</view>
             </view>
-             <view class="bookright">
-                 <button class="book_btn" form-type="submit"  >
-                     提交预约
-                 </button>
-             </view>
-
+            <view class="bookright">
+                <button class="book_btn" form-type="submit">提交预约</button>
+            </view>
         </view>
-
-
-
-
     </form>
 </view>

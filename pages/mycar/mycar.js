@@ -22,6 +22,13 @@ Page({
     addCarposition:'addcar'
   },
   totalPages: 1,
+  onShow() { 
+    this.setData({
+      page: 1,
+      cardetail: [],
+    });
+    this.getcaritems();
+  },
   onLoad: function (options) {
     if (options.tab != undefined) {
       this.setData({
@@ -32,7 +39,7 @@ Page({
     wx.setStorageSync('bookstoreid', options.storeid);
     wx.setStorageSync('bookcarname', options.name);
     wx.setStorageSync('bookcaraddress', options.address);
-    this.getcaritems();
+
 
     this.setData({
       bookstoreid: options.storeid,

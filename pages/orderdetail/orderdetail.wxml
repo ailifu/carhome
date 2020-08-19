@@ -1,0 +1,63 @@
+<!-- pages/orderdetail/orderdetail.wxml -->
+<view class="order">
+  <view class="orderbox">
+    <view class="orderleft">订单编号：</view>
+    <view class="orderright">{{orderlist.order_sn}}</view>
+  </view>
+  <view class="orderbox">
+    <view class="orderleft">订单状态：</view>
+    <view class="orderright">
+      <block wx:if="{{orderlist.status===0}}">
+        <text style="color:blue">待付款</text>
+      </block>
+      <block wx:if="{{orderlist.status===1}}">
+        <text style="color:#f60">已付款待检测</text>
+      </block>
+      <block wx:if="{{orderlist.status===2}}">
+        <text style="color:#f00">已检测待确认</text>
+      </block>
+      <block wx:if="{{orderlist.status===3}}">
+        <text style="color:green">订单完成</text>
+      </block>
+       <block wx:if="{{orderlist.status===-2}}">
+        <text style="color:green">后台关闭</text>
+      </block>
+       <block wx:if="{{orderlist.status===-1}}">
+        <text style="color:green">已取消</text>
+      </block>
+    </view>
+  </view>
+  <view class="orderbox">
+    <view class="orderleft">订单日期：</view>
+    <view class="orderright">{{orderlist.create_time}}</view>
+  </view>
+    <view class="orderbox">
+    <view class="orderleft">订单类型：</view>
+    <view class="orderright">{{orderlist.is_true==1?'免费预约':'线上支付'}}</view>
+  </view>
+  <view class="orderbox">
+    <view class="orderleft">订单价格：</view>
+    <view class="orderright">{{orderlist.payprice}}元</view>
+  </view>
+     <view class="orderbox">
+    <view class="orderleft">车主姓名：</view>
+    <view class="orderright">{{orderlist.car_info.car_linkname}}</view>
+  </view>
+   <view class="orderbox">
+    <view class="orderleft">车牌号：</view>
+    <view class="orderright">{{orderlist.car_info.car_no}}</view>
+  </view>
+   <view class="orderbox">
+    <view class="orderleft">车辆类型：</view>
+    <view class="orderright">{{orderlist.car_info.car_cate}}</view>
+  </view>
+   <view class="orderbox">
+    <view class="orderleft">车架号：</view>
+    <view class="orderright">{{orderlist.car_info.car_vin}}</view>
+  </view>
+   <view class="orderbox">
+    <view class="orderleft">车辆注册日期：</view>
+    <view class="orderright">{{orderlist.car_info.car_regtime}}</view>
+  </view>
+
+</view>

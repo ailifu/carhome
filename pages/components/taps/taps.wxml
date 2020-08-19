@@ -31,7 +31,7 @@ value='{{objectArray[rangekey].value}}' ，rangekey是js中定义的对象数组
 		</view>
 </view>
 <view class="butsubmit">
-		<button style="width:560rpx;height:90rpx; font-size:38rpx" class="buticon" form-type="submit" url="../list/list?date={{dates}}&time={{booktime}}" bindtap="appointmentfunc">
+		<button style="width:560rpx;height:90rpx; font-size:38rpx" class="buticon" disabled="{{isSubmit}}" form-type="submit" url="../list/list?date={{dates}}&time={{booktime}}" bindtap="appointmentfunc">
 				马上预约
 		</button>
 </view>

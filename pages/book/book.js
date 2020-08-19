@@ -11,7 +11,6 @@ var datetips = '今天';
 let currentTimes = date.getHours() * 1;
 if (currentTimes >= 7 && currentTimes < 8) {
   newindex = 0;
- 
 } else if (currentTimes >= 8 && currentTimes < 9) {
   newindex = 1;
 } else if (currentTimes >= 9 && currentTimes < 10) {
@@ -34,17 +33,12 @@ if (currentTimes >= 7 && currentTimes < 8) {
   newindex = 10;
 } else if (currentTimes >= 18 && currentTimes < 24) {
   newindex = 0;
-  currentTimes=7
+  currentTimes = 7;
 } else {
   var newindex = 0;
-  currentTimes=7
+  currentTimes = 7;
 }
-let bookdate = wx.getStorageSync('bookdate');
-let bookcartype = wx.getStorageSync('bookcartype');
-let booktime = wx.getStorageSync('booktime');
-let bookstoreid = wx.getStorageSync('bookstoreid');
-let bookcarname = wx.getStorageSync('bookcarname');
-let bookcaraddress = wx.getStorageSync('bookcaraddress');
+console.log(wx.getStorageSync('bookcarname'), '111111111111111111');
 Page({
   /**
    * 页面的初始数据
@@ -52,12 +46,12 @@ Page({
   data: {
     bookdate: wx.getStorageSync('bookdate'),
     bookcartype: wx.getStorageSync('bookcartype'),
-    booktime:  wx.getStorageSync('booktime'),
+    booktime: wx.getStorageSync('booktime'),
     bookstoreid: wx.getStorageSync('bookstoreid'),
     bookcarno: '',
     newindex: newindex,
-    bookcaraddress:  wx.getStorageSync('bookcaraddress'),
-    bookcarname:wx.getStorageSync('bookcarname'),
+    bookcaraddress: wx.getStorageSync('bookcaraddress'),
+    bookcarname: wx.getStorageSync('bookcarname'),
     booktimelist: [
       {
         id: 7,
@@ -117,30 +111,38 @@ Page({
     ],
     GoodsList: [],
     index: 0,
-    indexgood:0,
+    indexgood: 0,
     if_checked: true,
     next_class: 0,
     good_price: 0.0,
     booklist: {},
     bookcarid: '',
-    good_id: '',
+    good_id: -1,
     book_type: 1,
-    bookselect:currentTimes
+    pay_type: 1,
+    bookselect: currentTimes,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  onShow() {
+    this.setData({
+      bookdate: wx.getStorageSync('bookdate'),
+      bookcartype: wx.getStorageSync('bookcartype'),
+      booktime: wx.getStorageSync('booktime'),
+      bookstoreid: wx.getStorageSync('bookstoreid'),
+
+      bookcaraddress: wx.getStorageSync('bookcaraddress'),
+      bookcarname: wx.getStorageSync('bookcarname'),
+    });
+  },
   onLoad: function (options) {
     // console.log(this.data.booktimelist);
+
     this.setData({
       bookcarno: options.car_no,
-      bookcarname: bookcarname,
-      bookcaraddress: bookcaraddress,
-      bookdate: bookdate,
-      bookcartype: bookcartype,
-      booktime: booktime,
-      bookstoreid: bookstoreid,
+
       bookcarid: options.id,
     });
     this.caletime();
@@ -150,13 +152,13 @@ Page({
     request({
       url: 'https://carinspect.xgyvip.cn/api/home/store/getinterval',
       data: {
-        storeid:  wx.getStorageSync('bookstoreid'),
+        storeid: wx.getStorageSync('bookstoreid'),
         date: wx.getStorageSync('bookdate'),
       },
     }).then((result) => {
       // let booktimenum = this.data.booktimelist;
       let booklist = result.data.data;
-      
+
       for (let index = 0; index < booklist.length; index++) {
         if (booklist[index].timer === 7) {
           booklist[index].timedetail =
@@ -195,44 +197,49 @@ Page({
       }
 
       let bookselect;
-      let booktime= wx.getStorageSync('booktime');
+      let booktime = wx.getStorageSync('booktime');
+
       for (let mm = 0; mm < booklist.length; mm++) {
- 
-      
-        if (booklist[mm].timer*1 === booktime*1) {
-         
-        bookselect=
-          booktime+':00-'+(booktime*1+1)+':00' + '  剩余' + booklist[mm].booknum;
-        }  
+        if (booklist[mm].timer * 1 === booktime * 1) {
+          bookselect =
+            booktime +
+            ':00-' +
+            (booktime * 1 + 1) +
+            ':00' +
+            '  剩余' +
+            booklist[mm].booknum;
+        }
       }
-      console.log(bookselect,'1111');
+      console.log(bookselect, '1111');
       this.setData({
         booklist,
-        bookselect
+        bookselect,
       });
     });
-  }, bindDateChange(e) { //选择日期
-   
+  },
+  bindDateChange(e) {
+    //选择日期
+
     wx.setStorageSync('bookdate', e.detail.value);
     this.setData({
       bookdate: e.detail.value,
     });
   },
 
-  bindPickerChange: function (e) { //x选择时段
- 
+  bindPickerChange: function (e) {
+    //x选择时段
+
     let booktimeindex = e.detail.value;
-   
+
     wx.setStorageSync('booktime', this.data.booklist[booktimeindex].timer);
-    console.log(this.data.booklist);
+
     this.setData({
       index: e.detail.value,
       booktime: this.data.booklist[booktimeindex].timer,
-      bookselect: this.data.booklist[booktimeindex].timedetail
+      bookselect: this.data.booklist[booktimeindex].timedetail,
     });
   },
   bindGoodsList(e) {
-    
     let element;
     let good_id;
 
@@ -245,8 +252,7 @@ Page({
 
     this.setData({
       good_price: element,
-      good_id: good_id 
- 
+      good_id: good_id,
     });
   },
 
@@ -266,119 +272,180 @@ Page({
   },
   listenerRadioGroup(e) {
     this.setData({
-      book_type: e.detail.value,
+      pay_type: e.detail.value,
     });
   },
   formSubmit: function (e) {
-    console.log(e);
-    var vipid = wx.getStorageSync('vipId');
-    const pargrams = {
-      vipid: vipid,
-      ids: this.data.good_id,
-      pay_type: 1,
-      car_id: this.data.bookcarid,
-      yue_date: this.data.bookdate,
-      yue_interval: this.data.booktime,
-      book_type: this.data.book_type,
-    };
+    if (this.data.good_id == -1) {
+      wx.showToast({
+        title: 'good_id为空',
+      });
+    } else {
+      var vipid = wx.getStorageSync('vipId');
 
-    request({
-      url: 'https://carinspect.xgyvip.cn/api/home/check/fastbuy',
-      data: pargrams,
-      method: 'POST',
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
-    }).then((result) => {
-      let { code } = result.data;
-      let { msg } = result.data;
-      let { order_id } = result.data.data;
-      let openid = wx.getStorageSync('openid');
-
-      //这部分代码是选择线上支付执行开始
-      wx.showModal({
-        title: msg,
-        content: '订单提交成功',
-        showCancel: true,
-        cancelText: '取消',
-        cancelColor: '#000000',
-        confirmText: '确定',
-        confirmColor: '#3CC51F',
-        success: (result) => {
-          if (result.confirm) {
-            request({
-              url: 'https://carinspect.xgyvip.cn/api/pay/check/paywx',
-              data: {
-                order_id,
-                openid,
+      const pargrams = {
+        vipid: vipid,
+        ids: this.data.good_id,
+        pay_type: this.data.pay_type,
+        car_id: this.data.bookcarid,
+        yue_date: this.data.bookdate,
+        yue_interval: this.data.booktime,
+        book_type: this.data.book_type,
+        isfree: 0,
+      };
+      if (this.data.pay_type == 2) {
+        pargrams.isfree = 1;
+      }
+      request({
+        url: 'https://carinspect.xgyvip.cn/api/home/check/fastbuy',
+        data: pargrams,
+        method: 'POST',
+        header: { 'content-type': 'application/x-www-form-urlencoded' },
+      }).then((result) => {
+        let { code } = result.data;
+        let { msg } = result.data;
+        let { order_id } = result.data.data;
+        let openid = wx.getStorageSync('openid');
+        if (pargrams.pay_type == 2) {
+          request({
+            url: 'https://carinspect.xgyvip.cn/api/pay/check/bookfree',
+            data: {
+              order_id,
+              openid,
+            },
+            method: 'POST',
+            header: { 'content-type': 'application/x-www-form-urlencoded' },
+          }).then((result) => {
+            console.log(result, '免费预约');
+            wx.showModal({
+              title: result.data.msg,
+              showCancel: false,
+              confirmText: '确定',
+              confirmColor: '#3CC51F',
+              success: (result) => {
+                if (result.confirm) {
+                  wx.navigateTo({
+                    url: '../order/order',
+                  });
+                }
               },
-              method: 'POST',
-              header: { 'content-type': 'application/x-www-form-urlencoded' },
-            }).then((result) => {
-              let {
-                appId,
-                timeStamp,
-                nonceStr,
-                signType,
-                paySign,
-              } = result.data.data;
-              // console.log(appId, timeStamp, nonceStr, signType, paySign);
-              let prepay_id = result.data.data.package;
-              wx.requestPayment({
-                timeStamp: timeStamp, // 时间戳，必填（后台传回）
-                nonceStr: nonceStr, // 随机字符串，必填（后台传回）
-                package: prepay_id, // 统一下单接口返回的 prepay_id 参数值，必填（后台传回）
-                signType: 'MD5', // 签名算法，非必填，（预先约定或者后台传回）
-                paySign: paySign, // 签名 ，必填 （后台传回）
-                success: function (res) {
-                  // 成功后的回调函数
-                  // do something
-                  wx.showModal({
-                    title: '支付成功',
-                    content: '',
-                    showCancel: true,
-                    cancelText: '取消',
-                    cancelColor: '#000000',
-                    confirmText: '确定',
-                    confirmColor: '#3CC51F',
-                    success: (result) => {
-                      if (result.confirm) {
-                        wx.navigateTo({
-                          url: '../order/order',
-                        });
-                      }
+            });
+          });
+        } else {
+          //这部分代码是选择线上支付执行开始
+          wx.showModal({
+            title: msg,
+
+            showCancel: true,
+            cancelText: '取消',
+            cancelColor: '#000000',
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if (result.confirm) {
+                request({
+                  url: 'https://carinspect.xgyvip.cn/api/pay/check/paywx',
+                  data: {
+                    order_id,
+                    openid,
+                    pay_price: 0,
+                  },
+                  method: 'POST',
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded',
+                  },
+                }).then((result) => {
+                  let {
+                    appId,
+                    timeStamp,
+                    nonceStr,
+                    signType,
+                    paySign,
+                  } = result.data.data;
+                  // console.log(appId, timeStamp, nonceStr, signType, paySign);
+                  let prepay_id = result.data.data.package;
+                  wx.requestPayment({
+                    timeStamp: timeStamp, // 时间戳，必填（后台传回）
+                    nonceStr: nonceStr, // 随机字符串，必填（后台传回）
+                    package: prepay_id, // 统一下单接口返回的 prepay_id 参数值，必填（后台传回）
+                    signType: 'MD5', // 签名算法，非必填，（预先约定或者后台传回）
+                    paySign: paySign, // 签名 ，必填 （后台传回）
+                    success: function (res) {
+                      // 成功后的回调函数
+                      // do something
+                      wx.showModal({
+                        title: '支付成功',
+                        content: '',
+                        showCancel: true,
+                        cancelText: '取消',
+                        cancelColor: '#000000',
+                        confirmText: '确定',
+                        confirmColor: '#3CC51F',
+                        success: (result) => {
+                          if (result.confirm) {
+                            wx.navigateTo({
+                              url: '../order/order',
+                            });
+                          }
+                        },
+                      });
+                    },
+                    fail: () => {
+                      wx.showModal({
+                        title: '支付失败',
+                        showCancel: false,
+                        confirmText: '确定',
+                        confirmColor: '#3CC51F',
+                        success: (result) => {
+                          if (result.confirm) {
+                            wx.navigateTo({
+                              url: '../order/order',
+                            });
+                          }
+                        },
+                      });
                     },
                   });
-                },
-                fail: () => {
-                  console.log(msg);
-                  wx.showModal({
-                    title: msg,
-                    content: '支付失败',
-                    showCancel: false,
-                    confirmText: '确定',
-                    confirmColor: '#3CC51F',
-                  });
-                },
-              });
-            });
-          }
-        },
+                });
+              }
+            },
+          });
+        }
+        //这部分代码是选择线上支付执行结束
       });
-      //这部分代码是选择线上支付执行结束
-    });
+    }
   },
   getGoodsList() {
-    request({
-      url: 'https://carinspect.xgyvip.cn/api/home/store/getGoodsList',
-      data: {
-        storeid: wx.getStorageSync('bookstoreid'),
-      },
-    }).then((result) => {
-      console.log(result);
-      this.setData({
-        good_id: result.data.data[0].good_id,
-        good_price: result.data.data[0].good_price,
-        GoodsList: result.data.data,
+    let storeid = wx.getStorageSync('bookstoreid');
+    if (storeid === '') {
+      storeid = this.data.bookstoreid;
+    } else {
+      request({
+        url: 'https://carinspect.xgyvip.cn/api/home/store/getGoodsList',
+        data: {
+          storeid: storeid,
+        },
+      }).then((result) => {
+ 
+        if (result.data.data == '') { 
+       
+            
+          wx.showToast({
+            title: '没有添加车辆预约类型，请联系站长',
+       
+            icon: 'none',
+            image: '',
+            duration: 3000,
+            mask: false,
+          });
+            
+         }else{
+        this.setData({
+          good_id: result.data.data[0].good_id,
+          good_price: result.data.data[0].good_price,
+          GoodsList: result.data.data,
+        });}
       });
-    });
+    }
   },
 });
